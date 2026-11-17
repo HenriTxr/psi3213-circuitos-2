@@ -78,11 +78,13 @@ padding-right:max(16px,env(safe-area-inset-right,0px))}#menu{display:block}
 body{font-size:15.5px}}
 </style></head><body>
 <button id="menu" aria-label="Índice">☰ Índice</button>
-<nav id="side"><h2>PSI3213 · Início</h2><nav class="pags"><a href="index.html" class=atual>Início</a><a href="glossario.html">Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button></nav>
+<nav id="side"><h2>PSI3213 · Início</h2><nav class="pags"><a href="index.html" class=atual>Início</a><a href="trilha.html">Trilha</a><a href="glossario.html">Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button></nav>
 <main><section id="capa"><script type="text/markdown">
-# PSI3213 Circuitos Elétricos II — material de estudo para a P1
+# PSI3213 Circuitos Elétricos II — material de estudo
 
-Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4** do programa: transformada de Laplace, circuitos de 2ª ordem, análise nodal e de malhas em Laplace, estabilidade, funções de rede, impedâncias, superposição, Thévenin e Norton.
+Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4** do programa: transformada de Laplace, circuitos de 2ª ordem, análise nodal e de malhas em Laplace, estabilidade, funções de rede, impedâncias, superposição, Thévenin e Norton. Em construção: **trilhas** para o testinho de FCPs, estabilidade e indutância mútua.
+
+> **Trilha** = aprender resolvendo: a teoria entra no momento em que é usada, em exemplos de dificuldade crescente, com uma figura a cada vez que o circuito muda. **Leia em ordem.**
 
 > **Como está organizado.** O **glossário** é teoria de consulta, na ordem das Listas, com as equações citando onde foram conferidas. Os **exercícios** são resoluções passo a passo; **cada um se sustenta sozinho** — reescreve toda fórmula que usa e não depende de nenhum outro. A ordem de leitura é livre: escolha pelo assunto no índice.
 
@@ -91,6 +93,19 @@ Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4
 ## Formulário da P1
 
 [Baixar o formulário (PDF, A4 frente e verso)](formulario-P1-PSI3213.pdf) — o único material permitido na prova.
+
+## Trilhas
+
+- **[04 — FCPs e estabilidade (trilha)](trilha.html#t-04-fcp-estabilidade)**
+  - [Como usar esta trilha](trilha.html#t-04-fcp-estabilidade-0)
+  - [4.1 Resposta livre e FCP](trilha.html#t-04-fcp-estabilidade-1)
+  - [· Exemplo 4.1a — RC livre (um armazenador)](trilha.html#t-04-fcp-estabilidade-h1)
+  - [· Exemplo 4.1b — RLC paralelo (dois armazenadores)](trilha.html#t-04-fcp-estabilidade-h2)
+  - [4.2 Onde está a FCP → o que a resposta faz](trilha.html#t-04-fcp-estabilidade-2)
+  - [· Exemplo 4.2a — O mesmo RLC, girando o botão do resistor](trilha.html#t-04-fcp-estabilidade-h6)
+  - [Roteiro E até aqui](trilha.html#t-04-fcp-estabilidade-3)
+  - [Referência rápida (etapa 1)](trilha.html#t-04-fcp-estabilidade-4)
+  - [Checklist (etapa 1)](trilha.html#t-04-fcp-estabilidade-5)
 
 ## Glossário
 
@@ -210,6 +225,7 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
     w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
+  let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
   sc.parentNode.replaceChild(d,sc);
 });
 renderMathInElement(document.body,{delimiters:[
