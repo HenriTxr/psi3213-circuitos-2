@@ -492,7 +492,9 @@ $$\begin{bmatrix} 1 + \frac1s & -\frac1s \\ -\frac1s & s + \frac1s \end{bmatrix}
 \;\Longrightarrow\; s^2+s+1 = 0
 \;\Longrightarrow\; s_{1,2} = -0{,}5 \pm j\tfrac{\sqrt3}{2}$$
 
-**Mesmas FCPs.** O método mudou, o circuito não.
+**Mesmas FCPs não nulas.** O método mudou, o circuito não.
+
+> ⚠️ **Correção (17/11/2026): falta uma FCP em $s=0$.** Este circuito é a Fig. 14.4 do Orsini, que a Lista 04 resolve nas pp. 7-10. O nó entre os dois capacitores só toca capacitores (**corte capacitivo**), e isso dá um modo constante. As duas montagens acima o escondem: a nodal tem $\frac1s$ na matriz (não é definida em $s=0$), e a de malhas associou os capacitores. Pela ANM, sem dividir por $s$, $\det=-4s(s^2+s+1)$. As FCPs são **$0$ e $-\frac12\pm j\frac{\sqrt3}{2}$** *(Lista 04, §4.2.2-4.2.4, pp. 8-9)*. Veja a trilha [04-fcp-estabilidade](trilha.html#t-04-fcp-estabilidade), exemplo 4.3b.
 
 > 💡 **O vetor do lado direito nem foi usado.** O slide é explícito: *"as c.i.
 > não afetam a obtenção das FCPs — podemos desprezá-las"*. Para achar FCP você
