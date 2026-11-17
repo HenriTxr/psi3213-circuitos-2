@@ -76,9 +76,51 @@ main{margin-left:0;padding-block:56px 60px;
 padding-left:max(16px,env(safe-area-inset-left,0px));
 padding-right:max(16px,env(safe-area-inset-right,0px))}#menu{display:block}
 body{font-size:15.5px}}
-</style></head><body>
+h1{border-bottom:2px solid var(--line);padding-bottom:6px}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);
+z-index:20}
+blockquote.warn{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 9%,var(--bg))}
+blockquote.dica{border-left-color:#d4a017;background:color-mix(in srgb,#d4a017 10%,var(--bg))}
+.feito{margin:2px 0 10px;background:none;border:1px solid var(--line);
+color:var(--muted);border-radius:99px;padding:3px 12px;font-size:13px;
+cursor:pointer}
+.feito.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+#side a.ok::after{content:" \2713";color:var(--accent);font-weight:700}
+#side a.cur{background:var(--code);box-shadow:inset 3px 0 var(--accent)}
+.fl{margin:2px 0 4px;font-size:12px;color:var(--muted)}
+.fl span{display:inline-block;min-width:48px}
+.chip{border:1px solid var(--line);background:none;color:var(--muted);
+border-radius:99px;padding:1px 9px;font-size:12px;cursor:pointer;margin:0 3px 3px 0}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pn{display:flex;gap:10px;margin-top:26px}
+.pn a{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 12px;
+text-decoration:none;font-size:.88em;background:var(--card);overflow-wrap:anywhere}
+.pn a:hover{border-color:var(--accent)}
+.pn a.d{text-align:right}
+.cap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;margin:20px 0}
+.cap a.c{display:block;text-decoration:none;color:var(--fg);background:var(--card);
+border:1px solid var(--line);border-radius:12px;padding:16px;
+transition:border-color .15s,transform .15s}
+.cap a.c:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cap .t{font-weight:700;font-size:1.05em;color:var(--accent)}
+.cap .d{color:var(--muted);font-size:.88em;margin:4px 0 10px}
+.cap .n{font-size:.8em;color:var(--muted);margin-top:5px}
+.barra{height:6px;background:var(--code);border-radius:99px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--accent);width:0}
+#cont{display:none;margin:14px 0;padding:10px 14px;border:1px solid var(--accent);
+border-radius:10px;background:var(--card)}
+main img{cursor:zoom-in}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
+align-items:center;justify-content:center;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:96vw;max-height:94vh;margin:0;padding:8px;cursor:zoom-out}
+@media print{#side,#menu,#prog,.pn,.feito,#lb{display:none!important}
+main{margin:0;max-width:none;padding:0}}
+</style></head><body data-pag="glossario.html">
+<div id="prog"></div>
 <button id="menu" aria-label="Índice">☰ Índice</button>
-<nav id="side"><h2>PSI3213 · Glossário</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html">Trilha</a><a href="glossario.html" class=atual>Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><a class="g" href="#g-03-base-nodal-malhas">Base para a Lista 03 — Análise Nodal e de Malhas</a><a class="s" href="#g-03-base-nodal-malhas-0">Como usar este arquivo</a><a class="s" href="#g-03-base-nodal-malhas-1">A.1 A transformada unilateral e o limite 0⁻</a><a class="s" href="#g-03-base-nodal-malhas-2">A.2 Derivada e integral — a origem das condições iniciais</a><a class="s" href="#g-03-base-nodal-malhas-3">A.3 Pares e propriedades</a><a class="s" href="#g-03-base-nodal-malhas-4">A.4 Frações parciais: os seis casos</a><a class="s" href="#g-03-base-nodal-malhas-5">A.5 Frequências complexas próprias (FCPs)</a><a class="s" href="#g-03-base-nodal-malhas-6">A.6 Teoremas do valor inicial e do valor final</a><a class="s" href="#g-03-base-nodal-malhas-7">A.7 De s para jω: o elo entre Laplace e o fasor</a><a class="s" href="#g-03-base-nodal-malhas-8">B.1 Ordem dinâmica e os três regimes</a><a class="s" href="#g-03-base-nodal-malhas-9">B.2 Continuidade, comutação e a fotografia em 0⁺</a><a class="s" href="#g-03-base-nodal-malhas-10">B.3 Três frequências que não devem ser confundidas</a><a class="s" href="#g-03-base-nodal-malhas-11">B.4 Os modelos com energia inicial</a><a class="s" href="#g-03-base-nodal-malhas-12">B.5 Como os ramos formam a matriz nodal</a><a class="s" href="#g-03-base-nodal-malhas-13">B.6 Como os ramos formam a matriz de malhas</a><a class="s" href="#g-03-base-nodal-malhas-14">B.7 Supernó e supermalha</a><a class="s" href="#g-03-base-nodal-malhas-15">B.8 Fontes vinculadas</a><a class="s" href="#g-03-base-nodal-malhas-16">B.9 Análise nodal modificada (ANM)</a><a class="s" href="#g-03-base-nodal-malhas-17">B.10 Determinante, FCPs e as armadilhas de eliminação</a><a class="s" href="#g-03-base-nodal-malhas-18">B.11 Leitura inversa: da matriz ao circuito</a><a class="s" href="#g-03-base-nodal-malhas-19">B.12 Análise de malhas em RPS</a><a class="s" href="#g-03-base-nodal-malhas-20">Laplace (Lista 01)</a><a class="s" href="#g-03-base-nodal-malhas-21">Segunda ordem (Lista 03, §3.1)</a><a class="s" href="#g-03-base-nodal-malhas-22">Modelos com energia inicial</a><a class="s" href="#g-03-base-nodal-malhas-23">Montagem</a><a class="s" href="#g-03-base-nodal-malhas-24">RPS</a><a class="s" href="#g-03-base-nodal-malhas-25">Os cinco erros que esta lista cobra</a><a class="g" href="#g-04-estabilidade-teoremas-redes">Bloco 4 — Estabilidade e Teoremas das Redes</a><a class="s" href="#g-04-estabilidade-teoremas-redes-0">Como usar este arquivo</a><a class="s" href="#g-04-estabilidade-teoremas-redes-1">4.1 Estabilidade das redes lineares</a><a class="s" href="#g-04-estabilidade-teoremas-redes-2">4.2 Componentes constantes das respostas livres</a><a class="s" href="#g-04-estabilidade-teoremas-redes-3">4.3 Funções de rede, FCPs, polos, zeros e excitação</a><a class="s" href="#g-04-estabilidade-teoremas-redes-4">4.4 Método das impedâncias</a><a class="s" href="#g-04-estabilidade-teoremas-redes-5">4.5 Superposição, Thévenin e Norton</a><a class="s" href="#g-04-estabilidade-teoremas-redes-6">Estabilidade</a><a class="s" href="#g-04-estabilidade-teoremas-redes-7">Funções de rede</a><a class="s" href="#g-04-estabilidade-teoremas-redes-8">Impedâncias e teoremas</a><a class="s" href="#g-04-estabilidade-teoremas-redes-9">Os cinco erros que este bloco cobra</a></nav>
+<nav id="side"><h2>PSI3213 · Glossário</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html">Trilha</a><a href="glossario.html" class=atual>Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><div class="fl"><span>Estado</span><button type="button" class="chip" data-k="st" data-v="pend">Pendentes</button><button type="button" class="chip" data-k="st" data-v="feito">Estudados</button></div><div class="fl"><span>Bloco</span><button type="button" class="chip" data-k="b" data-v="03">3</button><button type="button" class="chip" data-k="b" data-v="04">4</button><button type="button" class="chip" data-k="b" data-v="05">5</button></div><a class="g" href="#g-03-base-nodal-malhas">Base para a Lista 03 — Análise Nodal e de Malhas</a><a class="s" href="#g-03-base-nodal-malhas-0">Como usar este arquivo</a><a class="s" href="#g-03-base-nodal-malhas-1">A.1 A transformada unilateral e o limite 0⁻</a><a class="s" href="#g-03-base-nodal-malhas-2">A.2 Derivada e integral — a origem das condições iniciais</a><a class="s" href="#g-03-base-nodal-malhas-3">A.3 Pares e propriedades</a><a class="s" href="#g-03-base-nodal-malhas-4">A.4 Frações parciais: os seis casos</a><a class="s" href="#g-03-base-nodal-malhas-5">A.5 Frequências complexas próprias (FCPs)</a><a class="s" href="#g-03-base-nodal-malhas-6">A.6 Teoremas do valor inicial e do valor final</a><a class="s" href="#g-03-base-nodal-malhas-7">A.7 De s para jω: o elo entre Laplace e o fasor</a><a class="s" href="#g-03-base-nodal-malhas-8">B.1 Ordem dinâmica e os três regimes</a><a class="s" href="#g-03-base-nodal-malhas-9">B.2 Continuidade, comutação e a fotografia em 0⁺</a><a class="s" href="#g-03-base-nodal-malhas-10">B.3 Três frequências que não devem ser confundidas</a><a class="s" href="#g-03-base-nodal-malhas-11">B.4 Os modelos com energia inicial</a><a class="s" href="#g-03-base-nodal-malhas-12">B.5 Como os ramos formam a matriz nodal</a><a class="s" href="#g-03-base-nodal-malhas-13">B.6 Como os ramos formam a matriz de malhas</a><a class="s" href="#g-03-base-nodal-malhas-14">B.7 Supernó e supermalha</a><a class="s" href="#g-03-base-nodal-malhas-15">B.8 Fontes vinculadas</a><a class="s" href="#g-03-base-nodal-malhas-16">B.9 Análise nodal modificada (ANM)</a><a class="s" href="#g-03-base-nodal-malhas-17">B.10 Determinante, FCPs e as armadilhas de eliminação</a><a class="s" href="#g-03-base-nodal-malhas-18">B.11 Leitura inversa: da matriz ao circuito</a><a class="s" href="#g-03-base-nodal-malhas-19">B.12 Análise de malhas em RPS</a><a class="s" href="#g-03-base-nodal-malhas-20">Laplace (Lista 01)</a><a class="s" href="#g-03-base-nodal-malhas-21">Segunda ordem (Lista 03, §3.1)</a><a class="s" href="#g-03-base-nodal-malhas-22">Modelos com energia inicial</a><a class="s" href="#g-03-base-nodal-malhas-23">Montagem</a><a class="s" href="#g-03-base-nodal-malhas-24">RPS</a><a class="s" href="#g-03-base-nodal-malhas-25">Os cinco erros que esta lista cobra</a><a class="g" href="#g-04-estabilidade-teoremas-redes">Bloco 4 — Estabilidade e Teoremas das Redes</a><a class="s" href="#g-04-estabilidade-teoremas-redes-0">Como usar este arquivo</a><a class="s" href="#g-04-estabilidade-teoremas-redes-1">4.1 Estabilidade das redes lineares</a><a class="s" href="#g-04-estabilidade-teoremas-redes-2">4.2 Componentes constantes das respostas livres</a><a class="s" href="#g-04-estabilidade-teoremas-redes-3">4.3 Funções de rede, FCPs, polos, zeros e excitação</a><a class="s" href="#g-04-estabilidade-teoremas-redes-4">4.4 Método das impedâncias</a><a class="s" href="#g-04-estabilidade-teoremas-redes-5">4.5 Superposição, Thévenin e Norton</a><a class="s" href="#g-04-estabilidade-teoremas-redes-6">Estabilidade</a><a class="s" href="#g-04-estabilidade-teoremas-redes-7">Funções de rede</a><a class="s" href="#g-04-estabilidade-teoremas-redes-8">Impedâncias e teoremas</a><a class="s" href="#g-04-estabilidade-teoremas-redes-9">Os cinco erros que este bloco cobra</a></nav>
 <main><section id="g-03-base-nodal-malhas"><script type="text/markdown">
 # Base para a Lista 03 — Análise Nodal e de Malhas
 
@@ -2406,6 +2448,9 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   const d=document.createElement('div');d.innerHTML=h;
   d.querySelectorAll('table').forEach(t=>{const w=document.createElement('div');
     w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});
+  d.querySelectorAll('blockquote').forEach(b=>{const t=b.textContent.trim();
+    if(t.startsWith('⚠'))b.classList.add('warn');
+    else if(t.startsWith('💡'))b.classList.add('dica');});
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
@@ -2419,19 +2464,139 @@ document.getElementById('menu').onclick=()=>side.classList.toggle('aberto');
 side.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>
   side.classList.remove('aberto'));
 const busca=document.getElementById('busca');
-if(busca){busca.oninput=()=>{
-  const q=busca.value.normalize('NFD').replace(/[̀-ͯ]/g,'')
-    .toLowerCase().trim();
-  side.querySelectorAll('a.g,a.s').forEach(a=>{
-    const t=a.textContent.normalize('NFD').replace(/[̀-ͯ]/g,'')
-      .toLowerCase();
-    a.classList.toggle('oculto',q&&!t.includes(q));});
+const PAG=document.body.dataset.pag;
+const main=document.querySelector('main');
+const secoes=[...main.querySelectorAll(':scope > section')];
+function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .toLowerCase().trim();}
+let feitos={};
+try{feitos=JSON.parse(localStorage.getItem('feitos')||'{}');}catch(e){}
+function salva(){try{localStorage.setItem('feitos',JSON.stringify(feitos));}
+  catch(e){}}
+const alvoDe=a=>document.getElementById(a.getAttribute('href').slice(1));
+const secDe=a=>{const e=alvoDe(a);const s=e&&e.closest('section');
+  return s?s.id:null;};
+const links=[...side.querySelectorAll('a.g,a.s')]
+  .filter(a=>a.getAttribute('href').startsWith('#')&&alvoDe(a));
+const secLink={};
+links.forEach(a=>{const e=alvoDe(a);if(e.tagName==='SECTION')secLink[e.id]=a;});
+function grupoDe(a){let n=a.previousElementSibling;
+  while(n&&!(n.tagName==='DIV'&&n.classList.contains('g')))
+    n=n.previousElementSibling;
+  return n?n.textContent:'';}
+
+/* ---- filtros: busca + estado + bloco + origem ---- */
+const F={st:'',b:'',o:''};
+function aplica(){
+  const q=busca?norm(busca.value):'';
+  links.forEach(a=>{
+    const id=secDe(a),t=norm(a.textContent),m=id&&id.match(/^[egt]-(\d\d)/);
+    let ok=!q||t.includes(q);
+    if(F.b&&(!m||m[1]!==F.b))ok=false;
+    if(F.st==='feito'&&!feitos[id])ok=false;
+    if(F.st==='pend'&&feitos[id])ok=false;
+    if(F.o&&(F.o==='P')!==grupoDe(a).includes('Provas'))ok=false;
+    a.classList.toggle('oculto',!ok);});
   side.querySelectorAll('div.g').forEach(g=>{
     let n=g.nextElementSibling,vis=false;
-    while(n&&!n.classList.contains('g')){if(!n.classList.contains('oculto'))
-      vis=true;n=n.nextElementSibling;}
-    g.classList.toggle('oculto',q&&!vis);});
-};}
+    while(n&&!(n.tagName==='DIV'&&n.classList.contains('g'))){
+      if(n.tagName==='A'&&!n.classList.contains('oculto'))vis=true;
+      n=n.nextElementSibling;}
+    g.classList.toggle('oculto',!vis&&!!(q||F.b||F.st||F.o));});
+  const filtrando=F.b||F.st||F.o;
+  secoes.forEach(s=>{const a=secLink[s.id];
+    s.classList.toggle('oculto',!!(filtrando&&a&&a.classList.contains('oculto')));});
+  pager();
+}
+if(busca)busca.oninput=aplica;
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  const k=c.dataset.k,v=c.dataset.v;F[k]=F[k]===v?'':v;
+  document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>
+    x.classList.toggle('on',x.dataset.v===F[k]));aplica();});
+
+/* ---- marcar como estudado ---- */
+function marca(id){
+  const a=secLink[id];if(a)a.classList.toggle('ok',!!feitos[id]);
+  const b=document.querySelector('#'+CSS.escape(id)+' .feito');
+  if(b){b.classList.toggle('on',!!feitos[id]);
+    b.textContent=feitos[id]?'✓ estudado':'marcar como estudado';}
+}
+if(PAG!=='index.html'){
+  secoes.forEach(s=>{
+    const h=s.querySelector('h1');if(!h)return;
+    const b=document.createElement('button');b.type='button';b.className='feito';
+    b.onclick=()=>{if(feitos[s.id])delete feitos[s.id];else feitos[s.id]=1;
+      salva();marca(s.id);aplica();};
+    h.after(b);marca(s.id);});
+}
+
+/* ---- anterior / proximo ---- */
+function pager(){
+  main.querySelectorAll('.pn').forEach(p=>p.remove());
+  if(PAG==='index.html')return;
+  const vis=secoes.filter(s=>!s.classList.contains('oculto'));
+  vis.forEach((s,i)=>{
+    const p=document.createElement('div');p.className='pn';
+    const mk=(alvo,rot,cl)=>{const a=document.createElement('a');
+      a.href='#'+alvo.id;a.className=cl;
+      const l=secLink[alvo.id];
+      a.textContent=rot+(l?' '+l.textContent.replace(/ ✓$/,''):'');
+      a.onclick=e=>{e.preventDefault();history.replaceState(null,'','#'+alvo.id);
+        alvo.scrollIntoView();};return a;};
+    p.append(i>0?mk(vis[i-1],'←','e'):document.createElement('span'));
+    if(i<vis.length-1)p.append(mk(vis[i+1],'→','d'));
+    p.firstChild.tagName==='SPAN'&&(p.firstChild.style.flex='1');
+    s.append(p);});
+}
+
+/* ---- rolagem destacada, barra de leitura, ultimo ponto ---- */
+const porId={};
+links.forEach(a=>porId[a.getAttribute('href').slice(1)]=a);
+const alvos=[...main.querySelectorAll('section,h2,h3')].filter(e=>porId[e.id]);
+const barra=document.getElementById('prog');
+let atual=null,tick=false;
+function espia(){
+  tick=false;
+  const h=document.documentElement;
+  barra.style.width=(100*scrollY/Math.max(1,h.scrollHeight-innerHeight))+'%';
+  let best=null;
+  for(const e of alvos){if(e.offsetParent===null)continue;
+    if(e.getBoundingClientRect().top<=120)best=e;else break;}
+  if(!best||best===atual)return;
+  atual=best;
+  side.querySelectorAll('a.cur').forEach(x=>x.classList.remove('cur'));
+  const a=porId[best.id];a.classList.add('cur');
+  const sr=side.getBoundingClientRect(),ar=a.getBoundingClientRect();
+  if(ar.top<sr.top+40||ar.bottom>sr.bottom-20)
+    side.scrollTop+=ar.top-sr.top-sr.height/3;
+  try{localStorage.setItem('ultimo',JSON.stringify(
+    {u:PAG+'#'+best.id,r:a.textContent.replace(/ ✓$/,'')}));}catch(e){}
+}
+if(PAG!=='index.html'){
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(espia);}},
+    {passive:true});
+}
+
+/* ---- capa: progresso e continuar ---- */
+document.querySelectorAll('.cap a.c[data-pref]').forEach(c=>{
+  const tot=+c.dataset.tot,n=Object.keys(feitos).filter(k=>
+    k.startsWith(c.dataset.pref)).length;
+  c.querySelector('.barra i').style.width=(100*n/Math.max(1,tot))+'%';
+  c.querySelector('.n').textContent=n+' de '+tot+' estudados';});
+const cont=document.getElementById('cont');
+if(cont){try{const u=JSON.parse(localStorage.getItem('ultimo')||'null');
+  if(u){cont.style.display='block';const a=cont.querySelector('a');
+    a.href=u.u;a.textContent=u.r;}}catch(e){}}
+
+/* ---- zoom nas figuras ---- */
+const lb=document.createElement('div');lb.id='lb';
+lb.innerHTML='<img alt="">';document.body.append(lb);
+main.addEventListener('click',e=>{if(e.target.tagName==='IMG'){
+  lb.firstChild.src=e.target.src;lb.classList.add('on');}});
+lb.onclick=()=>lb.classList.remove('on');
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+
+aplica();
 const raiz=document.documentElement;
 try{const t=localStorage.getItem('tema');if(t)raiz.dataset.theme=t;}catch(e){}
 document.getElementById('tema').onclick=()=>{

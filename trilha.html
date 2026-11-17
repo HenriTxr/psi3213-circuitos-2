@@ -76,9 +76,51 @@ main{margin-left:0;padding-block:56px 60px;
 padding-left:max(16px,env(safe-area-inset-left,0px));
 padding-right:max(16px,env(safe-area-inset-right,0px))}#menu{display:block}
 body{font-size:15.5px}}
-</style></head><body>
+h1{border-bottom:2px solid var(--line);padding-bottom:6px}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);
+z-index:20}
+blockquote.warn{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 9%,var(--bg))}
+blockquote.dica{border-left-color:#d4a017;background:color-mix(in srgb,#d4a017 10%,var(--bg))}
+.feito{margin:2px 0 10px;background:none;border:1px solid var(--line);
+color:var(--muted);border-radius:99px;padding:3px 12px;font-size:13px;
+cursor:pointer}
+.feito.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+#side a.ok::after{content:" \2713";color:var(--accent);font-weight:700}
+#side a.cur{background:var(--code);box-shadow:inset 3px 0 var(--accent)}
+.fl{margin:2px 0 4px;font-size:12px;color:var(--muted)}
+.fl span{display:inline-block;min-width:48px}
+.chip{border:1px solid var(--line);background:none;color:var(--muted);
+border-radius:99px;padding:1px 9px;font-size:12px;cursor:pointer;margin:0 3px 3px 0}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pn{display:flex;gap:10px;margin-top:26px}
+.pn a{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 12px;
+text-decoration:none;font-size:.88em;background:var(--card);overflow-wrap:anywhere}
+.pn a:hover{border-color:var(--accent)}
+.pn a.d{text-align:right}
+.cap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;margin:20px 0}
+.cap a.c{display:block;text-decoration:none;color:var(--fg);background:var(--card);
+border:1px solid var(--line);border-radius:12px;padding:16px;
+transition:border-color .15s,transform .15s}
+.cap a.c:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cap .t{font-weight:700;font-size:1.05em;color:var(--accent)}
+.cap .d{color:var(--muted);font-size:.88em;margin:4px 0 10px}
+.cap .n{font-size:.8em;color:var(--muted);margin-top:5px}
+.barra{height:6px;background:var(--code);border-radius:99px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--accent);width:0}
+#cont{display:none;margin:14px 0;padding:10px 14px;border:1px solid var(--accent);
+border-radius:10px;background:var(--card)}
+main img{cursor:zoom-in}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
+align-items:center;justify-content:center;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:96vw;max-height:94vh;margin:0;padding:8px;cursor:zoom-out}
+@media print{#side,#menu,#prog,.pn,.feito,#lb{display:none!important}
+main{margin:0;max-width:none;padding:0}}
+</style></head><body data-pag="trilha.html">
+<div id="prog"></div>
 <button id="menu" aria-label="Índice">☰ Índice</button>
-<nav id="side"><h2>PSI3213 · Trilha</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html" class=atual>Trilha</a><a href="glossario.html">Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><p class="nota">Leia em ordem: cada seção usa a anterior.</p><a class="g" href="#t-04-fcp-estabilidade">04 — FCPs e estabilidade (trilha)</a><a class="s" href="#t-04-fcp-estabilidade-0">Como usar esta trilha</a><a class="s" href="#t-04-fcp-estabilidade-1">4.1 Resposta livre e FCP</a><a class="s" href="#t-04-fcp-estabilidade-h1">· Exemplo 4.1a — RC livre (um armazenador)</a><a class="s" href="#t-04-fcp-estabilidade-h2">· Exemplo 4.1b — RLC paralelo (dois armazenadores)</a><a class="s" href="#t-04-fcp-estabilidade-2">4.2 Onde está a FCP → o que a resposta faz</a><a class="s" href="#t-04-fcp-estabilidade-h6">· Exemplo 4.2a — O mesmo RLC, girando o botão do resistor</a><a class="s" href="#t-04-fcp-estabilidade-3">4.3 FCP nula: quando uma parte da resposta nunca vai embora</a><a class="s" href="#t-04-fcp-estabilidade-h9">· Exemplo 4.3a — T4 2025, Questão 4 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-h10">· Exemplo 4.3b — Corte só de capacitores (Fig. 14.4 da Lista)</a><a class="s" href="#t-04-fcp-estabilidade-4">4.4 Fonte vinculada: quando a rede ganha energia de fora</a><a class="s" href="#t-04-fcp-estabilidade-h13">· Exemplo 4.4a — O RLC da trilha com a fonte vinculada (Fig. 14.5 completa)</a><a class="s" href="#t-04-fcp-estabilidade-h14">· Exemplo 4.4b — T4 2025, Questão 2 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-5">4.5 FCP × polo de função de rede; estabilidade BIBO</a><a class="s" href="#t-04-fcp-estabilidade-h17">· Exemplo 4.5a — O RLC da trilha excitado na própria frequência (Lista 04, §4.1.8)</a><a class="s" href="#t-04-fcp-estabilidade-h18">· Exemplo 4.5b — T3 2025, Questão 4 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-6">Questões de prova no roteiro E</a><a class="s" href="#t-04-fcp-estabilidade-7">Roteiro E completo</a><a class="s" href="#t-04-fcp-estabilidade-8">Referência rápida</a><a class="s" href="#t-04-fcp-estabilidade-9">Checklist</a><a class="g" href="#t-05-mutuas">05 — Indutância mútua e transformador ideal (trilha)</a><a class="s" href="#t-05-mutuas-0">Como usar esta trilha</a><a class="s" href="#t-05-mutuas-1">5.1 Fluxo concatenado e indutância mútua</a><a class="s" href="#t-05-mutuas-2">5.2 Convenção dos pontos: o sinal de M di/dt</a><a class="s" href="#t-05-mutuas-h8">· Exemplo 5.2a — T5 2025, Questão 2</a><a class="s" href="#t-05-mutuas-3">5.3 Bobinas acopladas em série e em paralelo</a><a class="s" href="#t-05-mutuas-h12">· Exemplo 5.3a — T5 2025, Questão 1</a><a class="s" href="#t-05-mutuas-4">5.4 Mútua em Laplace: o fluxo inicial e o par desenhado com fontes</a><a class="s" href="#t-05-mutuas-5">5.5 Mútua na análise de malhas</a><a class="s" href="#t-05-mutuas-h19">· Exemplo 5.5a — Duas malhas acopladas (Lista 05, §5.3.3)</a><a class="s" href="#t-05-mutuas-h20">· Exemplo 5.5b — Uma bobina acoplada num ramo compartilhado</a><a class="s" href="#t-05-mutuas-6">5.6 Impedância refletida</a><a class="s" href="#t-05-mutuas-7">5.7 Coeficiente de acoplamento, transformador perfeito e ideal</a><a class="s" href="#t-05-mutuas-h32">· Exemplo 5.7a — T5 2025, Questão 4</a><a class="s" href="#t-05-mutuas-8">5.8 FCPs de circuitos acoplados</a><a class="s" href="#t-05-mutuas-9">5.9 Notas fora do recorte</a><a class="s" href="#t-05-mutuas-10">Banco de exercícios do bloco 5</a><a class="s" href="#t-05-mutuas-11">Referência rápida</a><a class="s" href="#t-05-mutuas-12">Checklist</a></nav>
+<nav id="side"><h2>PSI3213 · Trilha</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html" class=atual>Trilha</a><a href="glossario.html">Glossário</a><a href="exercicios.html">Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><div class="fl"><span>Estado</span><button type="button" class="chip" data-k="st" data-v="pend">Pendentes</button><button type="button" class="chip" data-k="st" data-v="feito">Estudados</button></div><div class="fl"><span>Bloco</span><button type="button" class="chip" data-k="b" data-v="03">3</button><button type="button" class="chip" data-k="b" data-v="04">4</button><button type="button" class="chip" data-k="b" data-v="05">5</button></div><p class="nota">Leia em ordem: cada seção usa a anterior.</p><a class="g" href="#t-04-fcp-estabilidade">04 — FCPs e estabilidade (trilha)</a><a class="s" href="#t-04-fcp-estabilidade-0">Como usar esta trilha</a><a class="s" href="#t-04-fcp-estabilidade-1">4.1 Resposta livre e FCP</a><a class="s" href="#t-04-fcp-estabilidade-h1">· Exemplo 4.1a — RC livre (um armazenador)</a><a class="s" href="#t-04-fcp-estabilidade-h2">· Exemplo 4.1b — RLC paralelo (dois armazenadores)</a><a class="s" href="#t-04-fcp-estabilidade-2">4.2 Onde está a FCP → o que a resposta faz</a><a class="s" href="#t-04-fcp-estabilidade-h6">· Exemplo 4.2a — O mesmo RLC, girando o botão do resistor</a><a class="s" href="#t-04-fcp-estabilidade-3">4.3 FCP nula: quando uma parte da resposta nunca vai embora</a><a class="s" href="#t-04-fcp-estabilidade-h9">· Exemplo 4.3a — T4 2025, Questão 4 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-h10">· Exemplo 4.3b — Corte só de capacitores (Fig. 14.4 da Lista)</a><a class="s" href="#t-04-fcp-estabilidade-4">4.4 Fonte vinculada: quando a rede ganha energia de fora</a><a class="s" href="#t-04-fcp-estabilidade-h13">· Exemplo 4.4a — O RLC da trilha com a fonte vinculada (Fig. 14.5 completa)</a><a class="s" href="#t-04-fcp-estabilidade-h14">· Exemplo 4.4b — T4 2025, Questão 2 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-5">4.5 FCP × polo de função de rede; estabilidade BIBO</a><a class="s" href="#t-04-fcp-estabilidade-h17">· Exemplo 4.5a — O RLC da trilha excitado na própria frequência (Lista 04, §4.1.8)</a><a class="s" href="#t-04-fcp-estabilidade-h18">· Exemplo 4.5b — T3 2025, Questão 4 (testinho)</a><a class="s" href="#t-04-fcp-estabilidade-6">Questões de prova no roteiro E</a><a class="s" href="#t-04-fcp-estabilidade-7">Roteiro E completo</a><a class="s" href="#t-04-fcp-estabilidade-8">Referência rápida</a><a class="s" href="#t-04-fcp-estabilidade-9">Checklist</a><a class="g" href="#t-05-mutuas">05 — Indutância mútua e transformador ideal (trilha)</a><a class="s" href="#t-05-mutuas-0">Como usar esta trilha</a><a class="s" href="#t-05-mutuas-1">5.1 Fluxo concatenado e indutância mútua</a><a class="s" href="#t-05-mutuas-2">5.2 Convenção dos pontos: o sinal de M di/dt</a><a class="s" href="#t-05-mutuas-h8">· Exemplo 5.2a — T5 2025, Questão 2</a><a class="s" href="#t-05-mutuas-3">5.3 Bobinas acopladas em série e em paralelo</a><a class="s" href="#t-05-mutuas-h12">· Exemplo 5.3a — T5 2025, Questão 1</a><a class="s" href="#t-05-mutuas-4">5.4 Mútua em Laplace: o fluxo inicial e o par desenhado com fontes</a><a class="s" href="#t-05-mutuas-5">5.5 Mútua na análise de malhas</a><a class="s" href="#t-05-mutuas-h19">· Exemplo 5.5a — Duas malhas acopladas (Lista 05, §5.3.3)</a><a class="s" href="#t-05-mutuas-h20">· Exemplo 5.5b — Uma bobina acoplada num ramo compartilhado</a><a class="s" href="#t-05-mutuas-6">5.6 Impedância refletida</a><a class="s" href="#t-05-mutuas-7">5.7 Coeficiente de acoplamento, transformador perfeito e ideal</a><a class="s" href="#t-05-mutuas-h32">· Exemplo 5.7a — T5 2025, Questão 4</a><a class="s" href="#t-05-mutuas-8">5.8 FCPs de circuitos acoplados</a><a class="s" href="#t-05-mutuas-9">5.9 Notas fora do recorte</a><a class="s" href="#t-05-mutuas-10">Banco de exercícios do bloco 5</a><a class="s" href="#t-05-mutuas-11">Referência rápida</a><a class="s" href="#t-05-mutuas-12">Checklist</a></nav>
 <main><section id="t-04-fcp-estabilidade"><script type="text/markdown">
 # 04 — FCPs e estabilidade (trilha)
 
@@ -2628,6 +2670,9 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   const d=document.createElement('div');d.innerHTML=h;
   d.querySelectorAll('table').forEach(t=>{const w=document.createElement('div');
     w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});
+  d.querySelectorAll('blockquote').forEach(b=>{const t=b.textContent.trim();
+    if(t.startsWith('⚠'))b.classList.add('warn');
+    else if(t.startsWith('💡'))b.classList.add('dica');});
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
@@ -2641,19 +2686,139 @@ document.getElementById('menu').onclick=()=>side.classList.toggle('aberto');
 side.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>
   side.classList.remove('aberto'));
 const busca=document.getElementById('busca');
-if(busca){busca.oninput=()=>{
-  const q=busca.value.normalize('NFD').replace(/[̀-ͯ]/g,'')
-    .toLowerCase().trim();
-  side.querySelectorAll('a.g,a.s').forEach(a=>{
-    const t=a.textContent.normalize('NFD').replace(/[̀-ͯ]/g,'')
-      .toLowerCase();
-    a.classList.toggle('oculto',q&&!t.includes(q));});
+const PAG=document.body.dataset.pag;
+const main=document.querySelector('main');
+const secoes=[...main.querySelectorAll(':scope > section')];
+function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .toLowerCase().trim();}
+let feitos={};
+try{feitos=JSON.parse(localStorage.getItem('feitos')||'{}');}catch(e){}
+function salva(){try{localStorage.setItem('feitos',JSON.stringify(feitos));}
+  catch(e){}}
+const alvoDe=a=>document.getElementById(a.getAttribute('href').slice(1));
+const secDe=a=>{const e=alvoDe(a);const s=e&&e.closest('section');
+  return s?s.id:null;};
+const links=[...side.querySelectorAll('a.g,a.s')]
+  .filter(a=>a.getAttribute('href').startsWith('#')&&alvoDe(a));
+const secLink={};
+links.forEach(a=>{const e=alvoDe(a);if(e.tagName==='SECTION')secLink[e.id]=a;});
+function grupoDe(a){let n=a.previousElementSibling;
+  while(n&&!(n.tagName==='DIV'&&n.classList.contains('g')))
+    n=n.previousElementSibling;
+  return n?n.textContent:'';}
+
+/* ---- filtros: busca + estado + bloco + origem ---- */
+const F={st:'',b:'',o:''};
+function aplica(){
+  const q=busca?norm(busca.value):'';
+  links.forEach(a=>{
+    const id=secDe(a),t=norm(a.textContent),m=id&&id.match(/^[egt]-(\d\d)/);
+    let ok=!q||t.includes(q);
+    if(F.b&&(!m||m[1]!==F.b))ok=false;
+    if(F.st==='feito'&&!feitos[id])ok=false;
+    if(F.st==='pend'&&feitos[id])ok=false;
+    if(F.o&&(F.o==='P')!==grupoDe(a).includes('Provas'))ok=false;
+    a.classList.toggle('oculto',!ok);});
   side.querySelectorAll('div.g').forEach(g=>{
     let n=g.nextElementSibling,vis=false;
-    while(n&&!n.classList.contains('g')){if(!n.classList.contains('oculto'))
-      vis=true;n=n.nextElementSibling;}
-    g.classList.toggle('oculto',q&&!vis);});
-};}
+    while(n&&!(n.tagName==='DIV'&&n.classList.contains('g'))){
+      if(n.tagName==='A'&&!n.classList.contains('oculto'))vis=true;
+      n=n.nextElementSibling;}
+    g.classList.toggle('oculto',!vis&&!!(q||F.b||F.st||F.o));});
+  const filtrando=F.b||F.st||F.o;
+  secoes.forEach(s=>{const a=secLink[s.id];
+    s.classList.toggle('oculto',!!(filtrando&&a&&a.classList.contains('oculto')));});
+  pager();
+}
+if(busca)busca.oninput=aplica;
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  const k=c.dataset.k,v=c.dataset.v;F[k]=F[k]===v?'':v;
+  document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>
+    x.classList.toggle('on',x.dataset.v===F[k]));aplica();});
+
+/* ---- marcar como estudado ---- */
+function marca(id){
+  const a=secLink[id];if(a)a.classList.toggle('ok',!!feitos[id]);
+  const b=document.querySelector('#'+CSS.escape(id)+' .feito');
+  if(b){b.classList.toggle('on',!!feitos[id]);
+    b.textContent=feitos[id]?'✓ estudado':'marcar como estudado';}
+}
+if(PAG!=='index.html'){
+  secoes.forEach(s=>{
+    const h=s.querySelector('h1');if(!h)return;
+    const b=document.createElement('button');b.type='button';b.className='feito';
+    b.onclick=()=>{if(feitos[s.id])delete feitos[s.id];else feitos[s.id]=1;
+      salva();marca(s.id);aplica();};
+    h.after(b);marca(s.id);});
+}
+
+/* ---- anterior / proximo ---- */
+function pager(){
+  main.querySelectorAll('.pn').forEach(p=>p.remove());
+  if(PAG==='index.html')return;
+  const vis=secoes.filter(s=>!s.classList.contains('oculto'));
+  vis.forEach((s,i)=>{
+    const p=document.createElement('div');p.className='pn';
+    const mk=(alvo,rot,cl)=>{const a=document.createElement('a');
+      a.href='#'+alvo.id;a.className=cl;
+      const l=secLink[alvo.id];
+      a.textContent=rot+(l?' '+l.textContent.replace(/ ✓$/,''):'');
+      a.onclick=e=>{e.preventDefault();history.replaceState(null,'','#'+alvo.id);
+        alvo.scrollIntoView();};return a;};
+    p.append(i>0?mk(vis[i-1],'←','e'):document.createElement('span'));
+    if(i<vis.length-1)p.append(mk(vis[i+1],'→','d'));
+    p.firstChild.tagName==='SPAN'&&(p.firstChild.style.flex='1');
+    s.append(p);});
+}
+
+/* ---- rolagem destacada, barra de leitura, ultimo ponto ---- */
+const porId={};
+links.forEach(a=>porId[a.getAttribute('href').slice(1)]=a);
+const alvos=[...main.querySelectorAll('section,h2,h3')].filter(e=>porId[e.id]);
+const barra=document.getElementById('prog');
+let atual=null,tick=false;
+function espia(){
+  tick=false;
+  const h=document.documentElement;
+  barra.style.width=(100*scrollY/Math.max(1,h.scrollHeight-innerHeight))+'%';
+  let best=null;
+  for(const e of alvos){if(e.offsetParent===null)continue;
+    if(e.getBoundingClientRect().top<=120)best=e;else break;}
+  if(!best||best===atual)return;
+  atual=best;
+  side.querySelectorAll('a.cur').forEach(x=>x.classList.remove('cur'));
+  const a=porId[best.id];a.classList.add('cur');
+  const sr=side.getBoundingClientRect(),ar=a.getBoundingClientRect();
+  if(ar.top<sr.top+40||ar.bottom>sr.bottom-20)
+    side.scrollTop+=ar.top-sr.top-sr.height/3;
+  try{localStorage.setItem('ultimo',JSON.stringify(
+    {u:PAG+'#'+best.id,r:a.textContent.replace(/ ✓$/,'')}));}catch(e){}
+}
+if(PAG!=='index.html'){
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(espia);}},
+    {passive:true});
+}
+
+/* ---- capa: progresso e continuar ---- */
+document.querySelectorAll('.cap a.c[data-pref]').forEach(c=>{
+  const tot=+c.dataset.tot,n=Object.keys(feitos).filter(k=>
+    k.startsWith(c.dataset.pref)).length;
+  c.querySelector('.barra i').style.width=(100*n/Math.max(1,tot))+'%';
+  c.querySelector('.n').textContent=n+' de '+tot+' estudados';});
+const cont=document.getElementById('cont');
+if(cont){try{const u=JSON.parse(localStorage.getItem('ultimo')||'null');
+  if(u){cont.style.display='block';const a=cont.querySelector('a');
+    a.href=u.u;a.textContent=u.r;}}catch(e){}}
+
+/* ---- zoom nas figuras ---- */
+const lb=document.createElement('div');lb.id='lb';
+lb.innerHTML='<img alt="">';document.body.append(lb);
+main.addEventListener('click',e=>{if(e.target.tagName==='IMG'){
+  lb.firstChild.src=e.target.src;lb.classList.add('on');}});
+lb.onclick=()=>lb.classList.remove('on');
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+
+aplica();
 const raiz=document.documentElement;
 try{const t=localStorage.getItem('tema');if(t)raiz.dataset.theme=t;}catch(e){}
 document.getElementById('tema').onclick=()=>{

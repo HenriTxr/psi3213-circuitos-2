@@ -76,9 +76,51 @@ main{margin-left:0;padding-block:56px 60px;
 padding-left:max(16px,env(safe-area-inset-left,0px));
 padding-right:max(16px,env(safe-area-inset-right,0px))}#menu{display:block}
 body{font-size:15.5px}}
-</style></head><body>
+h1{border-bottom:2px solid var(--line);padding-bottom:6px}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);
+z-index:20}
+blockquote.warn{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 9%,var(--bg))}
+blockquote.dica{border-left-color:#d4a017;background:color-mix(in srgb,#d4a017 10%,var(--bg))}
+.feito{margin:2px 0 10px;background:none;border:1px solid var(--line);
+color:var(--muted);border-radius:99px;padding:3px 12px;font-size:13px;
+cursor:pointer}
+.feito.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+#side a.ok::after{content:" \2713";color:var(--accent);font-weight:700}
+#side a.cur{background:var(--code);box-shadow:inset 3px 0 var(--accent)}
+.fl{margin:2px 0 4px;font-size:12px;color:var(--muted)}
+.fl span{display:inline-block;min-width:48px}
+.chip{border:1px solid var(--line);background:none;color:var(--muted);
+border-radius:99px;padding:1px 9px;font-size:12px;cursor:pointer;margin:0 3px 3px 0}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pn{display:flex;gap:10px;margin-top:26px}
+.pn a{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 12px;
+text-decoration:none;font-size:.88em;background:var(--card);overflow-wrap:anywhere}
+.pn a:hover{border-color:var(--accent)}
+.pn a.d{text-align:right}
+.cap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;margin:20px 0}
+.cap a.c{display:block;text-decoration:none;color:var(--fg);background:var(--card);
+border:1px solid var(--line);border-radius:12px;padding:16px;
+transition:border-color .15s,transform .15s}
+.cap a.c:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cap .t{font-weight:700;font-size:1.05em;color:var(--accent)}
+.cap .d{color:var(--muted);font-size:.88em;margin:4px 0 10px}
+.cap .n{font-size:.8em;color:var(--muted);margin-top:5px}
+.barra{height:6px;background:var(--code);border-radius:99px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--accent);width:0}
+#cont{display:none;margin:14px 0;padding:10px 14px;border:1px solid var(--accent);
+border-radius:10px;background:var(--card)}
+main img{cursor:zoom-in}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
+align-items:center;justify-content:center;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:96vw;max-height:94vh;margin:0;padding:8px;cursor:zoom-out}
+@media print{#side,#menu,#prog,.pn,.feito,#lb{display:none!important}
+main{margin:0;max-width:none;padding:0}}
+</style></head><body data-pag="exercicios.html">
+<div id="prog"></div>
 <button id="menu" aria-label="Índice">☰ Índice</button>
-<nav id="side"><h2>PSI3213 · Exercícios</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html">Trilha</a><a href="glossario.html">Glossário</a><a href="exercicios.html" class=atual>Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><p class="nota">Cada exercício é autossuficiente: a ordem é livre.</p><div class="g">Bloco 3 — Análise nodal e de malhas (Lista 03) · Lista</div><a class="s" href="#e-03-q01-duas-malhas-energia-inicial">Questão 1 — Duas malhas e energia inicial</a><a class="s" href="#e-03-q02-lck-com-fonte-vinculada">Questão 2 — LCK com fonte vinculada</a><a class="s" href="#e-03-q03-leitura-de-matriz-aumentada">Questão 3 — Leitura de uma matriz aumentada</a><a class="s" href="#e-03-q04-parametros-e-memoria-de-uma-rede">Questão 4 — Parâmetros e memória de uma rede</a><a class="s" href="#e-03-q05-um-no-tres-ramos-com-memoria">Questão 5 — Um nó, três ramos com memória</a><a class="s" href="#e-03-obj02-malhas-com-tensao-auxiliar">Questão objetiva 2 — Malhas com tensão auxiliar</a><a class="s" href="#e-03-obj04-ao-ideal-na-analise-nodal">Questão objetiva 4 — AO ideal na análise nodal</a><a class="s" href="#e-03-obj06-solucao-efetiva-da-corrente-de-malha">Questão objetiva 6 — Solução efetiva da corrente de malha</a><a class="s" href="#e-03-dis02-da-matriz-as-malhas-em-rps">Questão dissertativa 2 — Da matriz às malhas em RPS</a><a class="s" href="#e-03-dis03-anm-parametros-eliminacao-valor-inicial">Questão dissertativa 3 — ANM: parâmetros, eliminação e valor inicial</a><div class="g">Bloco 4 — Estabilidade e teoremas das redes · Lista</div><a class="s" href="#e-04-q01-fcps-nulas-modos-respostas">Questão 1 — FCPs nulas e modos presentes nas respostas</a><a class="s" href="#e-04-q02-fcp-amplitude-estabilidade-vinculada">Questão 2 — FCP, amplitude livre e estabilidade com fonte vinculada</a><a class="s" href="#e-04-q03-corte-capacitivo-carga-estabilidade">Questão 3 — Corte capacitivo, carga conservada e estabilidade</a><a class="s" href="#e-04-q04-thevenin-rede-rc-condicao-inicial">Questão 4 — Thévenin de uma rede RC com condição inicial</a><a class="s" href="#e-04-q05-norton-lc-energia-inicial">Questão 5 — Norton de LC com energia inicial</a><a class="s" href="#e-04-q06-fcps-da-resposta-em-frequencia">Questão 6 — FCPs a partir da resposta em frequência</a><a class="s" href="#e-04-obj01-estabilidade-livre-ressonancia-lc">Questão objetiva 1 — Estabilidade livre e ressonância de um circuito LC</a><a class="s" href="#e-04-obj02-fcp-zero-e-thevenin-com-transcondutancia">Objetiva 2 — FCP nula e Thévenin com fonte de transcondutância</a><a class="s" href="#e-04-obj03-admitancia-norton-rede-rlc">Questão objetiva 3 — Admitância de Norton de uma rede RLC</a><a class="s" href="#e-04-obj04-superposicao-corrente-inicial-do-indutor">Objetiva 4 — Superposição e corrente inicial do indutor</a><a class="s" href="#e-04-obj05-estabilidade-rps-fonte-vinculada">Questão objetiva 5 — Estabilidade e resposta senoidal com fonte vinculada</a><a class="s" href="#e-04-obj06-tensao-thevenin-rede-rl">Questão objetiva 6 — Tensão de Thévenin de uma rede RL</a><a class="s" href="#e-04-dis01-resposta-completa-fcps-bibo">Questão dissertativa 1 — Resposta completa, FCPs e estabilidade BIBO</a><a class="s" href="#e-04-dis02-norton-com-impulso-e-condicoes-iniciais">Dissertativa 2 — Norton com impulso e condições iniciais</a><a class="s" href="#e-04-dis03-fcps-e-matriz-de-funcoes-de-rede">Questão dissertativa 3 — FCPs e matriz de funções de rede</a><a class="s" href="#e-04-dis04-estabilidade-e-thevenin-por-analise-nodal">Questão dissertativa 4 — Estabilidade e Thévenin a partir de análise nodal</a><div class="g">Bloco 4 — Estabilidade e teoremas das redes · Provas e testinhos</div><a class="s" href="#e-04-p1-2022-t1-forcada-cancelamento-polo-zero">P1 2022, Teste 1 — Resposta forçada com cancelamento polo-zero</a><a class="s" href="#e-04-p1-2022-t3-edo-por-impedancias">P1 2022, Teste 3 — A EDO de um circuito pelo método das impedâncias</a><a class="s" href="#e-04-p1-2022-t4-rps-por-funcao-de-rede">P1 2022, Teste 4 — Corrente em RPS por F(jω), com correção de quadrante</a><a class="s" href="#e-04-p1-2022-t5-resposta-livre-de-f">P1 2022, Teste 5 — Resposta livre a partir de F(s) e da condição inicial</a><a class="s" href="#e-04-p1-2025-q2-polos-rampa-resposta-livre">P1 2025, Questão 2 — Polos e zeros, resposta permanente à rampa e resposta livre a partir de G(s)</a><a class="s" href="#e-04-t3-2025-q3-fase-passa-tudo">T3 2025, Questão 3 — Fase de um passa-tudo com amp-op em RPS</a><a class="s" href="#e-04-t3-2025-q4-polos-validade-rps">T3 2025, Questão 4 — Polos de F(s) e a validade do teorema do RPS</a><a class="s" href="#e-04-t4-2025-q1-thevenin-ci-capacitor">T4 2025, Questão 1 — Gerador de Thévenin em Laplace com condição inicial no capacitor</a><a class="s" href="#e-04-t4-2025-q2-rm-estabilidade-marginal">T4 2025, Questão 2 — Transresistência rm para estabilidade marginal</a><a class="s" href="#e-04-t4-2025-q3-impedancia-vista-vcvs">T4 2025, Questão 3 — Impedância vista pela fonte, com VCVS, em RPS</a><a class="s" href="#e-04-t4-2025-q4-fcps-laco-indutivo">T4 2025, Questão 4 — FCPs de um RLC paralelo com laço indutivo</a><div class="g">Bloco 5 — Indutância mútua e transformadores · Lista</div><a class="s" href="#e-05-q01-pontos-e-referencia-de-tensao">Questão 1 — Pontos e referência de tensão</a><a class="s" href="#e-05-q02-acoplamento-perfeito-e-transformador-ideal">Questão 2 — Acoplamento perfeito e transformador ideal</a><a class="s" href="#e-05-q03-equacoes-de-duas-malhas-acopladas">Questão 3 — Equações de duas malhas acopladas</a><a class="s" href="#e-05-q04-indutancia-terminal-serie-paralelo">Questão 4 — Indutância terminal de uma associação acoplada (série + paralelo)</a><a class="s" href="#e-05-q05-chave-e-fonte-de-corrente">Questão 5 — Duas posições de chave e uma fonte de corrente imposta</a><a class="s" href="#e-05-q06-casamento-transformador-ideal">Questão 6 — Casamento entre amplificador e caixa de som com transformador ideal</a><a class="s" href="#e-05-obj01-malha-com-tres-bobinas-acopladas">Questão objetiva 1 — Equação de malha com três bobinas acopladas</a><a class="s" href="#e-05-obj02-transformador-ideal-capacitor-carregado">Questão objetiva 2 — Transformador ideal e capacitor inicialmente carregado</a><a class="s" href="#e-05-obj03-impedancia-refletida-lado-1-ao-2">Questão objetiva 3 — Impedância refletida do lado 1 ao lado 2</a><a class="s" href="#e-05-obj04-transformador-ideal-dois-lados">Questão objetiva 4 — Transformador ideal com excitação nos dois lados</a><a class="s" href="#e-05-obj05-bobinas-acopladas-em-paralelo">Questão objetiva 5 — Impedância de duas bobinas acopladas em paralelo</a><a class="s" href="#e-05-obj06-tensao-induzida-secundario-aberto">Questão objetiva 6 — Tensão induzida no secundário aberto</a><a class="s" href="#e-05-dis01-acoplamento-perfeito-resposta-completa">Dissertativa 1 — Acoplamento perfeito, magnetização e resposta completa</a><a class="s" href="#e-05-dis02-funcao-de-tensao-rps-thevenin">Dissertativa 2 — Função de tensão, RPS e Thévenin em rede acoplada</a><a class="s" href="#e-05-dis03-identificacao-inversa-mutua-energia-inicial">Dissertativa 3 — Identificação inversa de uma rede com mútua e energia inicial</a><a class="s" href="#e-05-dis04-energia-matriz-fasorial-solucao-complexa">Dissertativa 4 — Energia, matriz fasorial e solução complexa completa</a><div class="g">Bloco 5 — Indutância mútua e transformadores · Provas e testinhos</div><a class="s" href="#e-05-p3-2025-q1-acoplamento-perfeito-impedancia">P3 2025, 1ª Questão — Transformador com acoplamento perfeito: matrizes, relação de tensões e impedância de entrada</a></nav>
+<nav id="side"><h2>PSI3213 · Exercícios</h2><nav class="pags"><a href="index.html">Início</a><a href="trilha.html">Trilha</a><a href="glossario.html">Glossário</a><a href="exercicios.html" class=atual>Exercícios</a></nav><button id="tema" type="button">claro/escuro</button><input id="busca" type="search" placeholder="Filtrar o índice…" autocomplete="off"><div class="fl"><span>Estado</span><button type="button" class="chip" data-k="st" data-v="pend">Pendentes</button><button type="button" class="chip" data-k="st" data-v="feito">Estudados</button></div><div class="fl"><span>Bloco</span><button type="button" class="chip" data-k="b" data-v="03">3</button><button type="button" class="chip" data-k="b" data-v="04">4</button><button type="button" class="chip" data-k="b" data-v="05">5</button></div><div class="fl"><span>Origem</span><button type="button" class="chip" data-k="o" data-v="L">Lista</button><button type="button" class="chip" data-k="o" data-v="P">Provas</button></div><p class="nota">Cada exercício é autossuficiente: a ordem é livre.</p><div class="g">Bloco 3 — Análise nodal e de malhas (Lista 03) · Lista</div><a class="s" href="#e-03-q01-duas-malhas-energia-inicial">Questão 1 — Duas malhas e energia inicial</a><a class="s" href="#e-03-q02-lck-com-fonte-vinculada">Questão 2 — LCK com fonte vinculada</a><a class="s" href="#e-03-q03-leitura-de-matriz-aumentada">Questão 3 — Leitura de uma matriz aumentada</a><a class="s" href="#e-03-q04-parametros-e-memoria-de-uma-rede">Questão 4 — Parâmetros e memória de uma rede</a><a class="s" href="#e-03-q05-um-no-tres-ramos-com-memoria">Questão 5 — Um nó, três ramos com memória</a><a class="s" href="#e-03-obj02-malhas-com-tensao-auxiliar">Questão objetiva 2 — Malhas com tensão auxiliar</a><a class="s" href="#e-03-obj04-ao-ideal-na-analise-nodal">Questão objetiva 4 — AO ideal na análise nodal</a><a class="s" href="#e-03-obj06-solucao-efetiva-da-corrente-de-malha">Questão objetiva 6 — Solução efetiva da corrente de malha</a><a class="s" href="#e-03-dis02-da-matriz-as-malhas-em-rps">Questão dissertativa 2 — Da matriz às malhas em RPS</a><a class="s" href="#e-03-dis03-anm-parametros-eliminacao-valor-inicial">Questão dissertativa 3 — ANM: parâmetros, eliminação e valor inicial</a><div class="g">Bloco 4 — Estabilidade e teoremas das redes · Lista</div><a class="s" href="#e-04-q01-fcps-nulas-modos-respostas">Questão 1 — FCPs nulas e modos presentes nas respostas</a><a class="s" href="#e-04-q02-fcp-amplitude-estabilidade-vinculada">Questão 2 — FCP, amplitude livre e estabilidade com fonte vinculada</a><a class="s" href="#e-04-q03-corte-capacitivo-carga-estabilidade">Questão 3 — Corte capacitivo, carga conservada e estabilidade</a><a class="s" href="#e-04-q04-thevenin-rede-rc-condicao-inicial">Questão 4 — Thévenin de uma rede RC com condição inicial</a><a class="s" href="#e-04-q05-norton-lc-energia-inicial">Questão 5 — Norton de LC com energia inicial</a><a class="s" href="#e-04-q06-fcps-da-resposta-em-frequencia">Questão 6 — FCPs a partir da resposta em frequência</a><a class="s" href="#e-04-obj01-estabilidade-livre-ressonancia-lc">Questão objetiva 1 — Estabilidade livre e ressonância de um circuito LC</a><a class="s" href="#e-04-obj02-fcp-zero-e-thevenin-com-transcondutancia">Objetiva 2 — FCP nula e Thévenin com fonte de transcondutância</a><a class="s" href="#e-04-obj03-admitancia-norton-rede-rlc">Questão objetiva 3 — Admitância de Norton de uma rede RLC</a><a class="s" href="#e-04-obj04-superposicao-corrente-inicial-do-indutor">Objetiva 4 — Superposição e corrente inicial do indutor</a><a class="s" href="#e-04-obj05-estabilidade-rps-fonte-vinculada">Questão objetiva 5 — Estabilidade e resposta senoidal com fonte vinculada</a><a class="s" href="#e-04-obj06-tensao-thevenin-rede-rl">Questão objetiva 6 — Tensão de Thévenin de uma rede RL</a><a class="s" href="#e-04-dis01-resposta-completa-fcps-bibo">Questão dissertativa 1 — Resposta completa, FCPs e estabilidade BIBO</a><a class="s" href="#e-04-dis02-norton-com-impulso-e-condicoes-iniciais">Dissertativa 2 — Norton com impulso e condições iniciais</a><a class="s" href="#e-04-dis03-fcps-e-matriz-de-funcoes-de-rede">Questão dissertativa 3 — FCPs e matriz de funções de rede</a><a class="s" href="#e-04-dis04-estabilidade-e-thevenin-por-analise-nodal">Questão dissertativa 4 — Estabilidade e Thévenin a partir de análise nodal</a><div class="g">Bloco 4 — Estabilidade e teoremas das redes · Provas e testinhos</div><a class="s" href="#e-04-p1-2022-t1-forcada-cancelamento-polo-zero">P1 2022, Teste 1 — Resposta forçada com cancelamento polo-zero</a><a class="s" href="#e-04-p1-2022-t3-edo-por-impedancias">P1 2022, Teste 3 — A EDO de um circuito pelo método das impedâncias</a><a class="s" href="#e-04-p1-2022-t4-rps-por-funcao-de-rede">P1 2022, Teste 4 — Corrente em RPS por F(jω), com correção de quadrante</a><a class="s" href="#e-04-p1-2022-t5-resposta-livre-de-f">P1 2022, Teste 5 — Resposta livre a partir de F(s) e da condição inicial</a><a class="s" href="#e-04-p1-2025-q2-polos-rampa-resposta-livre">P1 2025, Questão 2 — Polos e zeros, resposta permanente à rampa e resposta livre a partir de G(s)</a><a class="s" href="#e-04-t3-2025-q3-fase-passa-tudo">T3 2025, Questão 3 — Fase de um passa-tudo com amp-op em RPS</a><a class="s" href="#e-04-t3-2025-q4-polos-validade-rps">T3 2025, Questão 4 — Polos de F(s) e a validade do teorema do RPS</a><a class="s" href="#e-04-t4-2025-q1-thevenin-ci-capacitor">T4 2025, Questão 1 — Gerador de Thévenin em Laplace com condição inicial no capacitor</a><a class="s" href="#e-04-t4-2025-q2-rm-estabilidade-marginal">T4 2025, Questão 2 — Transresistência rm para estabilidade marginal</a><a class="s" href="#e-04-t4-2025-q3-impedancia-vista-vcvs">T4 2025, Questão 3 — Impedância vista pela fonte, com VCVS, em RPS</a><a class="s" href="#e-04-t4-2025-q4-fcps-laco-indutivo">T4 2025, Questão 4 — FCPs de um RLC paralelo com laço indutivo</a><div class="g">Bloco 5 — Indutância mútua e transformadores · Lista</div><a class="s" href="#e-05-q01-pontos-e-referencia-de-tensao">Questão 1 — Pontos e referência de tensão</a><a class="s" href="#e-05-q02-acoplamento-perfeito-e-transformador-ideal">Questão 2 — Acoplamento perfeito e transformador ideal</a><a class="s" href="#e-05-q03-equacoes-de-duas-malhas-acopladas">Questão 3 — Equações de duas malhas acopladas</a><a class="s" href="#e-05-q04-indutancia-terminal-serie-paralelo">Questão 4 — Indutância terminal de uma associação acoplada (série + paralelo)</a><a class="s" href="#e-05-q05-chave-e-fonte-de-corrente">Questão 5 — Duas posições de chave e uma fonte de corrente imposta</a><a class="s" href="#e-05-q06-casamento-transformador-ideal">Questão 6 — Casamento entre amplificador e caixa de som com transformador ideal</a><a class="s" href="#e-05-obj01-malha-com-tres-bobinas-acopladas">Questão objetiva 1 — Equação de malha com três bobinas acopladas</a><a class="s" href="#e-05-obj02-transformador-ideal-capacitor-carregado">Questão objetiva 2 — Transformador ideal e capacitor inicialmente carregado</a><a class="s" href="#e-05-obj03-impedancia-refletida-lado-1-ao-2">Questão objetiva 3 — Impedância refletida do lado 1 ao lado 2</a><a class="s" href="#e-05-obj04-transformador-ideal-dois-lados">Questão objetiva 4 — Transformador ideal com excitação nos dois lados</a><a class="s" href="#e-05-obj05-bobinas-acopladas-em-paralelo">Questão objetiva 5 — Impedância de duas bobinas acopladas em paralelo</a><a class="s" href="#e-05-obj06-tensao-induzida-secundario-aberto">Questão objetiva 6 — Tensão induzida no secundário aberto</a><a class="s" href="#e-05-dis01-acoplamento-perfeito-resposta-completa">Dissertativa 1 — Acoplamento perfeito, magnetização e resposta completa</a><a class="s" href="#e-05-dis02-funcao-de-tensao-rps-thevenin">Dissertativa 2 — Função de tensão, RPS e Thévenin em rede acoplada</a><a class="s" href="#e-05-dis03-identificacao-inversa-mutua-energia-inicial">Dissertativa 3 — Identificação inversa de uma rede com mútua e energia inicial</a><a class="s" href="#e-05-dis04-energia-matriz-fasorial-solucao-complexa">Dissertativa 4 — Energia, matriz fasorial e solução complexa completa</a><div class="g">Bloco 5 — Indutância mútua e transformadores · Provas e testinhos</div><a class="s" href="#e-05-p3-2025-q1-acoplamento-perfeito-impedancia">P3 2025, 1ª Questão — Transformador com acoplamento perfeito: matrizes, relação de tensões e impedância de entrada</a></nav>
 <main><section id="e-03-q01-duas-malhas-energia-inicial"><script type="text/markdown">
 # Questão 1 — Duas malhas e energia inicial
 
@@ -15026,6 +15068,9 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   const d=document.createElement('div');d.innerHTML=h;
   d.querySelectorAll('table').forEach(t=>{const w=document.createElement('div');
     w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});
+  d.querySelectorAll('blockquote').forEach(b=>{const t=b.textContent.trim();
+    if(t.startsWith('⚠'))b.classList.add('warn');
+    else if(t.startsWith('💡'))b.classList.add('dica');});
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
@@ -15039,19 +15084,139 @@ document.getElementById('menu').onclick=()=>side.classList.toggle('aberto');
 side.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>
   side.classList.remove('aberto'));
 const busca=document.getElementById('busca');
-if(busca){busca.oninput=()=>{
-  const q=busca.value.normalize('NFD').replace(/[̀-ͯ]/g,'')
-    .toLowerCase().trim();
-  side.querySelectorAll('a.g,a.s').forEach(a=>{
-    const t=a.textContent.normalize('NFD').replace(/[̀-ͯ]/g,'')
-      .toLowerCase();
-    a.classList.toggle('oculto',q&&!t.includes(q));});
+const PAG=document.body.dataset.pag;
+const main=document.querySelector('main');
+const secoes=[...main.querySelectorAll(':scope > section')];
+function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .toLowerCase().trim();}
+let feitos={};
+try{feitos=JSON.parse(localStorage.getItem('feitos')||'{}');}catch(e){}
+function salva(){try{localStorage.setItem('feitos',JSON.stringify(feitos));}
+  catch(e){}}
+const alvoDe=a=>document.getElementById(a.getAttribute('href').slice(1));
+const secDe=a=>{const e=alvoDe(a);const s=e&&e.closest('section');
+  return s?s.id:null;};
+const links=[...side.querySelectorAll('a.g,a.s')]
+  .filter(a=>a.getAttribute('href').startsWith('#')&&alvoDe(a));
+const secLink={};
+links.forEach(a=>{const e=alvoDe(a);if(e.tagName==='SECTION')secLink[e.id]=a;});
+function grupoDe(a){let n=a.previousElementSibling;
+  while(n&&!(n.tagName==='DIV'&&n.classList.contains('g')))
+    n=n.previousElementSibling;
+  return n?n.textContent:'';}
+
+/* ---- filtros: busca + estado + bloco + origem ---- */
+const F={st:'',b:'',o:''};
+function aplica(){
+  const q=busca?norm(busca.value):'';
+  links.forEach(a=>{
+    const id=secDe(a),t=norm(a.textContent),m=id&&id.match(/^[egt]-(\d\d)/);
+    let ok=!q||t.includes(q);
+    if(F.b&&(!m||m[1]!==F.b))ok=false;
+    if(F.st==='feito'&&!feitos[id])ok=false;
+    if(F.st==='pend'&&feitos[id])ok=false;
+    if(F.o&&(F.o==='P')!==grupoDe(a).includes('Provas'))ok=false;
+    a.classList.toggle('oculto',!ok);});
   side.querySelectorAll('div.g').forEach(g=>{
     let n=g.nextElementSibling,vis=false;
-    while(n&&!n.classList.contains('g')){if(!n.classList.contains('oculto'))
-      vis=true;n=n.nextElementSibling;}
-    g.classList.toggle('oculto',q&&!vis);});
-};}
+    while(n&&!(n.tagName==='DIV'&&n.classList.contains('g'))){
+      if(n.tagName==='A'&&!n.classList.contains('oculto'))vis=true;
+      n=n.nextElementSibling;}
+    g.classList.toggle('oculto',!vis&&!!(q||F.b||F.st||F.o));});
+  const filtrando=F.b||F.st||F.o;
+  secoes.forEach(s=>{const a=secLink[s.id];
+    s.classList.toggle('oculto',!!(filtrando&&a&&a.classList.contains('oculto')));});
+  pager();
+}
+if(busca)busca.oninput=aplica;
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  const k=c.dataset.k,v=c.dataset.v;F[k]=F[k]===v?'':v;
+  document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>
+    x.classList.toggle('on',x.dataset.v===F[k]));aplica();});
+
+/* ---- marcar como estudado ---- */
+function marca(id){
+  const a=secLink[id];if(a)a.classList.toggle('ok',!!feitos[id]);
+  const b=document.querySelector('#'+CSS.escape(id)+' .feito');
+  if(b){b.classList.toggle('on',!!feitos[id]);
+    b.textContent=feitos[id]?'✓ estudado':'marcar como estudado';}
+}
+if(PAG!=='index.html'){
+  secoes.forEach(s=>{
+    const h=s.querySelector('h1');if(!h)return;
+    const b=document.createElement('button');b.type='button';b.className='feito';
+    b.onclick=()=>{if(feitos[s.id])delete feitos[s.id];else feitos[s.id]=1;
+      salva();marca(s.id);aplica();};
+    h.after(b);marca(s.id);});
+}
+
+/* ---- anterior / proximo ---- */
+function pager(){
+  main.querySelectorAll('.pn').forEach(p=>p.remove());
+  if(PAG==='index.html')return;
+  const vis=secoes.filter(s=>!s.classList.contains('oculto'));
+  vis.forEach((s,i)=>{
+    const p=document.createElement('div');p.className='pn';
+    const mk=(alvo,rot,cl)=>{const a=document.createElement('a');
+      a.href='#'+alvo.id;a.className=cl;
+      const l=secLink[alvo.id];
+      a.textContent=rot+(l?' '+l.textContent.replace(/ ✓$/,''):'');
+      a.onclick=e=>{e.preventDefault();history.replaceState(null,'','#'+alvo.id);
+        alvo.scrollIntoView();};return a;};
+    p.append(i>0?mk(vis[i-1],'←','e'):document.createElement('span'));
+    if(i<vis.length-1)p.append(mk(vis[i+1],'→','d'));
+    p.firstChild.tagName==='SPAN'&&(p.firstChild.style.flex='1');
+    s.append(p);});
+}
+
+/* ---- rolagem destacada, barra de leitura, ultimo ponto ---- */
+const porId={};
+links.forEach(a=>porId[a.getAttribute('href').slice(1)]=a);
+const alvos=[...main.querySelectorAll('section,h2,h3')].filter(e=>porId[e.id]);
+const barra=document.getElementById('prog');
+let atual=null,tick=false;
+function espia(){
+  tick=false;
+  const h=document.documentElement;
+  barra.style.width=(100*scrollY/Math.max(1,h.scrollHeight-innerHeight))+'%';
+  let best=null;
+  for(const e of alvos){if(e.offsetParent===null)continue;
+    if(e.getBoundingClientRect().top<=120)best=e;else break;}
+  if(!best||best===atual)return;
+  atual=best;
+  side.querySelectorAll('a.cur').forEach(x=>x.classList.remove('cur'));
+  const a=porId[best.id];a.classList.add('cur');
+  const sr=side.getBoundingClientRect(),ar=a.getBoundingClientRect();
+  if(ar.top<sr.top+40||ar.bottom>sr.bottom-20)
+    side.scrollTop+=ar.top-sr.top-sr.height/3;
+  try{localStorage.setItem('ultimo',JSON.stringify(
+    {u:PAG+'#'+best.id,r:a.textContent.replace(/ ✓$/,'')}));}catch(e){}
+}
+if(PAG!=='index.html'){
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(espia);}},
+    {passive:true});
+}
+
+/* ---- capa: progresso e continuar ---- */
+document.querySelectorAll('.cap a.c[data-pref]').forEach(c=>{
+  const tot=+c.dataset.tot,n=Object.keys(feitos).filter(k=>
+    k.startsWith(c.dataset.pref)).length;
+  c.querySelector('.barra i').style.width=(100*n/Math.max(1,tot))+'%';
+  c.querySelector('.n').textContent=n+' de '+tot+' estudados';});
+const cont=document.getElementById('cont');
+if(cont){try{const u=JSON.parse(localStorage.getItem('ultimo')||'null');
+  if(u){cont.style.display='block';const a=cont.querySelector('a');
+    a.href=u.u;a.textContent=u.r;}}catch(e){}}
+
+/* ---- zoom nas figuras ---- */
+const lb=document.createElement('div');lb.id='lb';
+lb.innerHTML='<img alt="">';document.body.append(lb);
+main.addEventListener('click',e=>{if(e.target.tagName==='IMG'){
+  lb.firstChild.src=e.target.src;lb.classList.add('on');}});
+lb.onclick=()=>lb.classList.remove('on');
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+
+aplica();
 const raiz=document.documentElement;
 try{const t=localStorage.getItem('tema');if(t)raiz.dataset.theme=t;}catch(e){}
 document.getElementById('tema').onclick=()=>{
