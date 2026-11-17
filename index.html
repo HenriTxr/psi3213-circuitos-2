@@ -82,7 +82,7 @@ body{font-size:15.5px}}
 <main><section id="capa"><script type="text/markdown">
 # PSI3213 Circuitos Elétricos II — material de estudo
 
-Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4** do programa: transformada de Laplace, circuitos de 2ª ordem, análise nodal e de malhas em Laplace, estabilidade, funções de rede, impedâncias, superposição, Thévenin e Norton. Em construção: **trilhas** para o testinho de FCPs, estabilidade e indutância mútua.
+Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4** do programa: transformada de Laplace, circuitos de 2ª ordem, análise nodal e de malhas em Laplace, estabilidade, funções de rede, impedâncias, superposição, Thévenin e Norton; e, para o testinho de FCPs, estabilidade e indutância mútua, as **trilhas** dos blocos 4 e 5 (mútua, convenção dos pontos, análise de malhas com mútua, transformador ideal) e as questões da Lista 05.
 
 > **Trilha** = aprender resolvendo: a teoria entra no momento em que é usada, em exemplos de dificuldade crescente, com uma figura a cada vez que o circuito muda. **Leia em ordem.**
 
@@ -106,9 +106,34 @@ Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4
   - [4.3 FCP nula: quando uma parte da resposta nunca vai embora](trilha.html#t-04-fcp-estabilidade-3)
   - [· Exemplo 4.3a — T4 2025, Questão 4 (testinho)](trilha.html#t-04-fcp-estabilidade-h9)
   - [· Exemplo 4.3b — Corte só de capacitores (Fig. 14.4 da Lista)](trilha.html#t-04-fcp-estabilidade-h10)
-  - [Roteiro E até aqui](trilha.html#t-04-fcp-estabilidade-4)
-  - [Referência rápida (etapas 1-2)](trilha.html#t-04-fcp-estabilidade-5)
-  - [Checklist (etapas 1-2)](trilha.html#t-04-fcp-estabilidade-6)
+  - [4.4 Fonte vinculada: quando a rede ganha energia de fora](trilha.html#t-04-fcp-estabilidade-4)
+  - [· Exemplo 4.4a — O RLC da trilha com a fonte vinculada (Fig. 14.5 completa)](trilha.html#t-04-fcp-estabilidade-h13)
+  - [· Exemplo 4.4b — T4 2025, Questão 2 (testinho)](trilha.html#t-04-fcp-estabilidade-h14)
+  - [4.5 FCP × polo de função de rede; estabilidade BIBO](trilha.html#t-04-fcp-estabilidade-5)
+  - [· Exemplo 4.5a — O RLC da trilha excitado na própria frequência (Lista 04, §4.1.8)](trilha.html#t-04-fcp-estabilidade-h17)
+  - [· Exemplo 4.5b — T3 2025, Questão 4 (testinho)](trilha.html#t-04-fcp-estabilidade-h18)
+  - [Questões de prova no roteiro E](trilha.html#t-04-fcp-estabilidade-6)
+  - [Roteiro E completo](trilha.html#t-04-fcp-estabilidade-7)
+  - [Referência rápida](trilha.html#t-04-fcp-estabilidade-8)
+  - [Checklist](trilha.html#t-04-fcp-estabilidade-9)
+- **[05 — Indutância mútua e transformador ideal (trilha)](trilha.html#t-05-mutuas)**
+  - [Como usar esta trilha](trilha.html#t-05-mutuas-0)
+  - [5.1 Fluxo concatenado e indutância mútua](trilha.html#t-05-mutuas-1)
+  - [5.2 Convenção dos pontos: o sinal de M di/dt](trilha.html#t-05-mutuas-2)
+  - [· Exemplo 5.2a — T5 2025, Questão 2](trilha.html#t-05-mutuas-h8)
+  - [5.3 Bobinas acopladas em série e em paralelo](trilha.html#t-05-mutuas-3)
+  - [· Exemplo 5.3a — T5 2025, Questão 1](trilha.html#t-05-mutuas-h12)
+  - [5.4 Mútua em Laplace: o fluxo inicial e o par desenhado com fontes](trilha.html#t-05-mutuas-4)
+  - [5.5 Mútua na análise de malhas](trilha.html#t-05-mutuas-5)
+  - [· Exemplo 5.5a — Duas malhas acopladas (Lista 05, §5.3.3)](trilha.html#t-05-mutuas-h19)
+  - [5.6 Impedância refletida](trilha.html#t-05-mutuas-6)
+  - [5.7 Coeficiente de acoplamento, transformador perfeito e ideal](trilha.html#t-05-mutuas-7)
+  - [· Exemplo 5.7a — T5 2025, Questão 4](trilha.html#t-05-mutuas-h30)
+  - [5.8 FCPs de circuitos acoplados](trilha.html#t-05-mutuas-8)
+  - [5.9 Notas fora do recorte](trilha.html#t-05-mutuas-9)
+  - [Banco de exercícios do bloco 5](trilha.html#t-05-mutuas-10)
+  - [Referência rápida](trilha.html#t-05-mutuas-11)
+  - [Checklist](trilha.html#t-05-mutuas-12)
 
 ## Glossário
 
@@ -151,7 +176,7 @@ Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4
   - [Impedâncias e teoremas](glossario.html#g-04-estabilidade-teoremas-redes-8)
   - [Os cinco erros que este bloco cobra](glossario.html#g-04-estabilidade-teoremas-redes-9)
 
-## Exercícios (37)
+## Exercícios (54)
 
 **Bloco 3 — Análise nodal e de malhas (Lista 03) · Lista**
 
@@ -198,6 +223,29 @@ Material pessoal de estudo (Poli-USP, 2º sem. 2026), cobrindo os **blocos 1 a 4
 - [T4 2025, Questão 2 — Transresistência rm para estabilidade marginal](exercicios.html#e-04-t4-2025-q2-rm-estabilidade-marginal)
 - [T4 2025, Questão 3 — Impedância vista pela fonte, com VCVS, em RPS](exercicios.html#e-04-t4-2025-q3-impedancia-vista-vcvs)
 - [T4 2025, Questão 4 — FCPs de um RLC paralelo com laço indutivo](exercicios.html#e-04-t4-2025-q4-fcps-laco-indutivo)
+
+**Bloco 5 — Indutância mútua e transformadores · Lista**
+
+- [Questão 1 — Pontos e referência de tensão](exercicios.html#e-05-q01-pontos-e-referencia-de-tensao)
+- [Questão 2 — Acoplamento perfeito e transformador ideal](exercicios.html#e-05-q02-acoplamento-perfeito-e-transformador-ideal)
+- [Questão 3 — Equações de duas malhas acopladas](exercicios.html#e-05-q03-equacoes-de-duas-malhas-acopladas)
+- [Questão 4 — Indutância terminal de uma associação acoplada (série + paralelo)](exercicios.html#e-05-q04-indutancia-terminal-serie-paralelo)
+- [Questão 5 — Duas posições de chave e uma fonte de corrente imposta](exercicios.html#e-05-q05-chave-e-fonte-de-corrente)
+- [Questão 6 — Casamento entre amplificador e caixa de som com transformador ideal](exercicios.html#e-05-q06-casamento-transformador-ideal)
+- [Questão objetiva 1 — Equação de malha com três bobinas acopladas](exercicios.html#e-05-obj01-malha-com-tres-bobinas-acopladas)
+- [Questão objetiva 2 — Transformador ideal e capacitor inicialmente carregado](exercicios.html#e-05-obj02-transformador-ideal-capacitor-carregado)
+- [Questão objetiva 3 — Impedância refletida do lado 1 ao lado 2](exercicios.html#e-05-obj03-impedancia-refletida-lado-1-ao-2)
+- [Questão objetiva 4 — Transformador ideal com excitação nos dois lados](exercicios.html#e-05-obj04-transformador-ideal-dois-lados)
+- [Questão objetiva 5 — Impedância de duas bobinas acopladas em paralelo](exercicios.html#e-05-obj05-bobinas-acopladas-em-paralelo)
+- [Questão objetiva 6 — Tensão induzida no secundário aberto](exercicios.html#e-05-obj06-tensao-induzida-secundario-aberto)
+- [Dissertativa 1 — Acoplamento perfeito, magnetização e resposta completa](exercicios.html#e-05-dis01-acoplamento-perfeito-resposta-completa)
+- [Dissertativa 2 — Função de tensão, RPS e Thévenin em rede acoplada](exercicios.html#e-05-dis02-funcao-de-tensao-rps-thevenin)
+- [Dissertativa 3 — Identificação inversa de uma rede com mútua e energia inicial](exercicios.html#e-05-dis03-identificacao-inversa-mutua-energia-inicial)
+- [Dissertativa 4 — Energia, matriz fasorial e solução complexa completa](exercicios.html#e-05-dis04-energia-matriz-fasorial-solucao-complexa)
+
+**Bloco 5 — Indutância mútua e transformadores · Provas e testinhos**
+
+- [P3 2025, 1ª Questão — Transformador com acoplamento perfeito: matrizes, relação de tensões e impedância de entrada](exercicios.html#e-05-p3-2025-q1-acoplamento-perfeito-impedancia)
 
 ## Roteiro de uso sugerido
 
