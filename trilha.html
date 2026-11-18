@@ -111,6 +111,33 @@ transition:border-color .15s,transform .15s}
 #cont{display:none;margin:14px 0;padding:10px 14px;border:1px solid var(--accent);
 border-radius:10px;background:var(--card)}
 main img{cursor:zoom-in}
+/* ---- derivacao clicavel: equacao com historico de calculo ---- */
+.comderiv{cursor:pointer;border-radius:8px;position:relative;
+transition:background .15s,box-shadow .15s}
+.comderiv:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);
+box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent)}
+.derivtag{display:block;text-align:center;font-size:12px;color:var(--accent);
+margin-top:-4px;letter-spacing:.02em}
+#dv{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:60;
+align-items:center;justify-content:center;padding:16px}
+#dv.on{display:flex}
+#dvp{background:var(--bg);border:1px solid var(--line);border-radius:14px;
+max-width:860px;width:100%;max-height:90vh;overflow:auto;padding:0 22px 22px}
+#dvh{position:sticky;top:0;background:var(--bg);padding:16px 0 10px;
+border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+#dvh b{font-size:1.05em}
+#dvh .katex{font-size:1.02em}
+#dvh span{color:var(--muted);font-size:.85em;flex:1}
+#dvx{background:none;border:1px solid var(--line);color:var(--fg);
+border-radius:8px;padding:4px 11px;cursor:pointer;font-size:15px}
+.dpasso{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:12px 0;
+border-bottom:1px dashed var(--line)}
+.dpasso:last-child{border-bottom:0}
+.dn{color:var(--muted);font-size:.82em;padding-top:6px;text-align:right}
+.dpasso .por{color:var(--muted);font-size:.9em;margin:0 0 2px}
+.dpasso .mat{overflow-x:auto}
+.dpasso.alvo{background:color-mix(in srgb,var(--accent) 9%,transparent);
+border-radius:8px}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
 align-items:center;justify-content:center;cursor:zoom-out}
 #lb.on{display:flex}
@@ -1668,6 +1695,43 @@ que é exatamente o $V$ de cima. Logo $V=\mathcal L\{t\operatorname{sen}t\}$:
 
 $$\boxed{\;v(t)=t\operatorname{sen}t\ \text{V},\quad t\ge0\;}$$
 
+```derivacao
+título: do circuito até v(t) = t·sen t
+---
+O sistema do circuito em Laplace, em estado zero: a linha 1 é a LCK do nó e a linha 2 é a lei do indutor. As CIs sumiram; sobrou a entrada.
+$$\begin{bmatrix}sC+G-g_m & 1\\ 1 & -sL\end{bmatrix}\begin{bmatrix}E\\ I_L\end{bmatrix}=\begin{bmatrix}I_s\\ 0\end{bmatrix}$$
+---
+O determinante da matriz $2\times2$: produto da diagonal principal menos o da secundária.
+$$\det\mathbf M=(sC+G-g_m)(-sL)-1\cdot1=-sL(sC+G-g_m)-1$$
+---
+Distribuindo o $-sL$ e pondo $-1$ em evidência:
+$$\det\mathbf M=-LCs^2-(G-g_m)Ls-1=-\left[LCs^2+(G-g_m)Ls+1\right]$$
+---
+Cramer para $E$: troca-se a coluna de $E$ pelo vetor do lado direito.
+$$\det\mathbf M_E=\det\begin{bmatrix}I_s&1\\0&-sL\end{bmatrix}=I_s(-sL)-1\cdot0=-sL\,I_s$$
+---
+A razão dos determinantes, com os dois sinais de menos se cancelando:
+$$E=\frac{-sL\,I_s}{-\left[LCs^2+(G-g_m)Ls+1\right]}=\frac{sL\,I_s}{LCs^2+(G-g_m)Ls+1}$$
+---
+Dividindo por $I_s$ — que é a definição de função de rede, saída sobre entrada:
+$$H(s)=\frac{E}{I_s}=\frac{sL}{LCs^2+(G-g_m)Ls+1}$$
+---
+Os números: $LC=2\cdot\frac12=1$, $L=2$ e, com $g_m=2$ S, $(G-g_m)L=(2-2)\cdot2=0$, que apaga o termo em $s$.
+$$H(s)=\frac{2s}{1\cdot s^2+0\cdot s+1}=\frac{2s}{s^2+1}$$
+---
+A entrada é $i_s=\mathrm{sen}\,t$, de transformada $\frac{1}{s^2+1}$. A saída é o produto:
+$$V=H\,I_s=\frac{2s}{s^2+1}\cdot\frac{1}{s^2+1}=\frac{2s}{(s^2+1)^2}$$
+---
+O polo $\pm j$ ficou duplo: veio um de $H$ e outro da entrada, porque a frequência é a mesma. Para antitransformar, a propriedade $\mathcal L\{t f(t)\}=-\frac{dF}{ds}$, com $f=\mathrm{sen}\,t$ e $F=\frac{1}{s^2+1}$.
+$$\frac{dF}{ds}=\frac{d}{ds}(s^2+1)^{-1}=-1\cdot(s^2+1)^{-2}\cdot2s=-\frac{2s}{(s^2+1)^2}$$
+---
+Trocando o sinal, como manda a propriedade:
+$$-\frac{dF}{ds}=\frac{2s}{(s^2+1)^2}=V$$
+---
+Como $V$ é exatamente a transformada de $t\,\mathrm{sen}\,t$:
+$$v(t)=t\,\mathrm{sen}\,t\ \text{V},\quad t\ge0$$
+```
+
 A entrada é limitada por 1 A; a saída tem envelope $\pm t$, que cresce sem limite. **Rede livre marginalmente estável, relação entrada–saída não BIBO** *(Lista 04, §4.1.8, p. 6)*.
 
 #### Passo 4 — O contraste: $g_m=1{,}5$ S
@@ -1787,6 +1851,67 @@ $$R=\underbrace{\frac{\alpha}{s-a}}_{\text{da rede}}+\underbrace{\frac{\beta s+\
 e no tempo isso é: uma exponencial $e^{at}$, mais uma senoide de 2 rad/s, mais uma senoide de 3 rad/s. **Os valores dos coeficientes não mudam essa conclusão** — bastaria que algum deles fosse zero, e nenhum é. Tomando $a=-1$ para ter números concretos (coeficientes obtidos com sympy, pelo mesmo método de igualar potências de $s$ do exemplo 4.5a):
 
 $$R=-\frac{1}{50(s+1)}+\frac{11s+4}{25(s^2+4)}-\frac{3(7s+3)}{50(s^2+9)}$$
+
+```derivacao
+título: frações parciais do item (c), do início ao fim
+---
+Ponto de partida: a saída é $R=F\,U$, com $a=-1$ e $U=\frac{s}{s^2+9}$.
+$$R=\frac{s(2s+3)}{(s+1)(s^2+4)(s^2+9)}$$
+---
+A forma da decomposição: um termo por fator do denominador. Os fatores de 2º grau recebem numerador de 1º grau, porque é o numerador mais geral de grau menor que o denominador.
+$$R=\frac{A}{s+1}+\frac{Bs+C}{s^2+4}+\frac{Ds+E}{s^2+9}$$
+---
+Multiplique os dois lados pelo denominador comum $(s+1)(s^2+4)(s^2+9)$. Cada fração cancela o seu próprio denominador.
+$$s(2s+3)=A(s^2+4)(s^2+9)+(Bs+C)(s+1)(s^2+9)+(Ds+E)(s+1)(s^2+4)$$
+---
+Atalho para $A$: faça $s=-1$, que anula o fator $(s+1)$ dos dois últimos termos e deixa só o primeiro.
+$$(-1)\big(2(-1)+3\big)=A(1+4)(1+9)$$
+---
+À esquerda, $2(-1)+3=1$, então o produto é $-1$. À direita, $5\cdot10=50$.
+$$-1=50A\quad\Longrightarrow\quad A=-\frac{1}{50}$$
+---
+Para os outros quatro, expanda o lado direito termo a termo. Primeiro termo, com $(s^2+4)(s^2+9)=s^4+13s^2+36$:
+$$A(s^2+4)(s^2+9)=As^4+13As^2+36A$$
+---
+Segundo termo, com $(s+1)(s^2+9)=s^3+s^2+9s+9$:
+$$(Bs+C)(s^3+s^2+9s+9)=Bs^4+(B+C)s^3+(9B+C)s^2+(9B+9C)s+9C$$
+---
+Terceiro termo, com $(s+1)(s^2+4)=s^3+s^2+4s+4$:
+$$(Ds+E)(s^3+s^2+4s+4)=Ds^4+(D+E)s^3+(4D+E)s^2+(4D+4E)s+4E$$
+---
+Somando os três e agrupando por potência de $s$:
+$$(A+B+D)s^4+(B+C+D+E)s^3+(13A+9B+C+4D+E)s^2+(9B+9C+4D+4E)s+(36A+9C+4E)$$
+---
+O lado esquerdo é $2s^2+3s$: coeficientes $0$, $0$, $2$, $3$, $0$. Igualando potência a potência, cinco equações:
+$$A+B+D=0;\quad B+C+D+E=0;\quad 13A+9B+C+4D+E=2;\quad 9B+9C+4D+4E=3;\quad 36A+9C+4E=0$$
+---
+Leve $A=-\frac{1}{50}$ na primeira equação:
+$$B+D=-A=\frac{1}{50}$$
+---
+Na segunda, agrupe $(B+D)+(C+E)=0$ e use o resultado anterior:
+$$C+E=-(B+D)=-\frac{1}{50}$$
+---
+Na terceira, separe os termos: $9B+4D+(C+E)=2-13A$. Com $C+E=-\frac{1}{50}$ e $13A=-\frac{13}{50}$:
+$$9B+4D=2+\frac{13}{50}+\frac{1}{50}=\frac{100+13+1}{50}=\frac{114}{50}=\frac{57}{25}$$
+---
+Resolva o par $(B,D)$: de $B+D=\frac{1}{50}$ vem $D=\frac{1}{50}-B$. Substituindo na equação acima:
+$$9B+4\left(\frac{1}{50}-B\right)=\frac{57}{25}\quad\Longrightarrow\quad 5B+\frac{2}{25}=\frac{57}{25}$$
+---
+Isolando $B$ e voltando em $D$:
+$$5B=\frac{55}{25}=\frac{11}{5}\ \Rightarrow\ B=\frac{11}{25};\qquad D=\frac{1}{50}-\frac{22}{50}=-\frac{21}{50}$$
+---
+Agora o par $(C,E)$. Da quinta equação, com $36A=-\frac{36}{50}$:
+$$9C+4E=-36A=\frac{36}{50}=\frac{18}{25}$$
+---
+De $C+E=-\frac{1}{50}$ vem $E=-\frac{1}{50}-C$. Substituindo:
+$$9C+4\left(-\frac{1}{50}-C\right)=\frac{18}{25}\quad\Longrightarrow\quad 5C-\frac{2}{25}=\frac{18}{25}$$
+---
+Isolando $C$ e voltando em $E$:
+$$5C=\frac{20}{25}=\frac{4}{5}\ \Rightarrow\ C=\frac{4}{25};\qquad E=-\frac{1}{50}-\frac{8}{50}=-\frac{9}{50}$$
+---
+Juntando os cinco coeficientes na forma do passo 2, e pondo $-21s-9=-3(7s+3)$ em evidência no último termo:
+$$R=-\frac{1}{50(s+1)}+\frac{11s+4}{25(s^2+4)}-\frac{3(7s+3)}{50(s^2+9)}$$
+```
 
 $$r(t)=\underbrace{-\tfrac{1}{50}e^{-t}}_{\to0}+\underbrace{\tfrac{11}{25}\cos2t+\tfrac{2}{25}\operatorname{sen}2t}_{\text{da rede, 2 rad/s, não morre}}\underbrace{-\tfrac{21}{50}\cos3t-\tfrac{3}{50}\operatorname{sen}3t}_{\text{da entrada, 3 rad/s}}$$
 
@@ -3026,6 +3151,36 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   d.querySelectorAll('blockquote').forEach(b=>{const t=b.textContent.trim();
     if(t.startsWith('⚠'))b.classList.add('warn');
     else if(t.startsWith('💡'))b.classList.add('dica');});
+  /* ---- blocos ```derivacao: historico de calculo da equacao acima ---- */
+  d.querySelectorAll('pre > code').forEach(cd=>{
+    if(!/language-derivacao/.test(cd.className||''))return;
+    const pre=cd.parentNode, alvo=pre.previousElementSibling;
+    const partes=cd.textContent.split(/^\s*---\s*$/m);
+    let tit='',corpo='',n=0;
+    partes.forEach(p=>{
+      let ls=p.split('\n').map(l=>l.trim()).filter(l=>l);
+      if(ls.length&&/^t[ií]tulo:/i.test(ls[0]))
+        tit=ls.shift().replace(/^t[ií]tulo:/i,'').trim();
+      if(!ls.length)return;
+      const mat=ls.filter(l=>l.startsWith('$$')).join(' ');
+      const por=ls.filter(l=>!l.startsWith('$$')).join(' ');
+      n++;
+      corpo+='<div class="dpasso"><div class="dn">'+n+'</div><div>'+
+        (por?'<p class="por">'+esc(por)+'</p>':'')+
+        (mat?'<div class="mat">'+esc(mat)+'</div>':'')+'</div></div>';
+    });
+    const box=document.createElement('div');
+    box.className='derivbox oculto';
+    box.dataset.tit=tit;box.innerHTML=corpo;
+    pre.parentNode.replaceChild(box,pre);
+    if(alvo){
+      alvo.classList.add('comderiv');
+      const tag=document.createElement('span');
+      tag.className='derivtag';
+      tag.textContent='▸ ver todos os passos até aqui';
+      alvo.appendChild(tag);
+    }
+  });
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
@@ -3034,6 +3189,45 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
 renderMathInElement(document.body,{delimiters:[
   {left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
   throwOnError:false});
+
+/* ---- modal das derivacoes ---- */
+(function(){
+  const alvos=[...document.querySelectorAll('.comderiv')];
+  if(!alvos.length)return;
+  const dv=document.createElement('div');dv.id='dv';
+  dv.innerHTML='<div id="dvp"><div id="dvh"><b id="dvt"></b>'+
+    '<span>todos os passos, do início até esta equação</span>'+
+    '<button id="dvx">fechar</button></div><div id="dvc"></div></div>';
+  document.body.append(dv);
+  const dvc=document.getElementById('dvc'), dvt=document.getElementById('dvt');
+  alvos.forEach((el,i)=>{
+    const sec=el.closest('section');
+    el.id='deriv-'+((sec&&sec.id)||'p')+'-'+i;
+    el.onclick=()=>abre(el);
+  });
+  function abre(el){
+    const box=el.nextElementSibling;
+    if(!box||!box.classList.contains('derivbox'))return;
+    dvt.innerHTML=esc(box.dataset.tit||'Passo a passo');
+    try{renderMathInElement(dvt,{delimiters:[
+      {left:'$$',right:'$$',display:false},
+      {left:'$',right:'$',display:false}],throwOnError:false});}catch(e){}
+    dvc.innerHTML=box.innerHTML;
+    const ps=dvc.querySelectorAll('.dpasso');
+    if(ps.length)ps[ps.length-1].classList.add('alvo');
+    dv.classList.add('on');
+    document.body.style.overflow='hidden';
+    if(history.replaceState)history.replaceState(null,'','#'+el.id);
+  }
+  function fecha(){dv.classList.remove('on');document.body.style.overflow='';}
+  dv.addEventListener('click',e=>{if(e.target===dv)fecha();});
+  document.getElementById('dvx').onclick=fecha;
+  addEventListener('keydown',e=>{if(e.key==='Escape')fecha();});
+  if(location.hash.startsWith('#deriv-')){
+    const el=document.getElementById(location.hash.slice(1));
+    if(el){el.scrollIntoView({block:'center'});abre(el);}
+  }
+})();
 const side=document.getElementById('side');
 document.getElementById('menu').onclick=()=>side.classList.toggle('aberto');
 side.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>

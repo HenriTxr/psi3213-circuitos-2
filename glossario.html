@@ -111,6 +111,33 @@ transition:border-color .15s,transform .15s}
 #cont{display:none;margin:14px 0;padding:10px 14px;border:1px solid var(--accent);
 border-radius:10px;background:var(--card)}
 main img{cursor:zoom-in}
+/* ---- derivacao clicavel: equacao com historico de calculo ---- */
+.comderiv{cursor:pointer;border-radius:8px;position:relative;
+transition:background .15s,box-shadow .15s}
+.comderiv:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);
+box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent)}
+.derivtag{display:block;text-align:center;font-size:12px;color:var(--accent);
+margin-top:-4px;letter-spacing:.02em}
+#dv{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:60;
+align-items:center;justify-content:center;padding:16px}
+#dv.on{display:flex}
+#dvp{background:var(--bg);border:1px solid var(--line);border-radius:14px;
+max-width:860px;width:100%;max-height:90vh;overflow:auto;padding:0 22px 22px}
+#dvh{position:sticky;top:0;background:var(--bg);padding:16px 0 10px;
+border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+#dvh b{font-size:1.05em}
+#dvh .katex{font-size:1.02em}
+#dvh span{color:var(--muted);font-size:.85em;flex:1}
+#dvx{background:none;border:1px solid var(--line);color:var(--fg);
+border-radius:8px;padding:4px 11px;cursor:pointer;font-size:15px}
+.dpasso{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:12px 0;
+border-bottom:1px dashed var(--line)}
+.dpasso:last-child{border-bottom:0}
+.dn{color:var(--muted);font-size:.82em;padding-top:6px;text-align:right}
+.dpasso .por{color:var(--muted);font-size:.9em;margin:0 0 2px}
+.dpasso .mat{overflow-x:auto}
+.dpasso.alvo{background:color-mix(in srgb,var(--accent) 9%,transparent);
+border-radius:8px}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
 align-items:center;justify-content:center;cursor:zoom-out}
 #lb.on{display:flex}
@@ -2451,6 +2478,36 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   d.querySelectorAll('blockquote').forEach(b=>{const t=b.textContent.trim();
     if(t.startsWith('⚠'))b.classList.add('warn');
     else if(t.startsWith('💡'))b.classList.add('dica');});
+  /* ---- blocos ```derivacao: historico de calculo da equacao acima ---- */
+  d.querySelectorAll('pre > code').forEach(cd=>{
+    if(!/language-derivacao/.test(cd.className||''))return;
+    const pre=cd.parentNode, alvo=pre.previousElementSibling;
+    const partes=cd.textContent.split(/^\s*---\s*$/m);
+    let tit='',corpo='',n=0;
+    partes.forEach(p=>{
+      let ls=p.split('\n').map(l=>l.trim()).filter(l=>l);
+      if(ls.length&&/^t[ií]tulo:/i.test(ls[0]))
+        tit=ls.shift().replace(/^t[ií]tulo:/i,'').trim();
+      if(!ls.length)return;
+      const mat=ls.filter(l=>l.startsWith('$$')).join(' ');
+      const por=ls.filter(l=>!l.startsWith('$$')).join(' ');
+      n++;
+      corpo+='<div class="dpasso"><div class="dn">'+n+'</div><div>'+
+        (por?'<p class="por">'+esc(por)+'</p>':'')+
+        (mat?'<div class="mat">'+esc(mat)+'</div>':'')+'</div></div>';
+    });
+    const box=document.createElement('div');
+    box.className='derivbox oculto';
+    box.dataset.tit=tit;box.innerHTML=corpo;
+    pre.parentNode.replaceChild(box,pre);
+    if(alvo){
+      alvo.classList.add('comderiv');
+      const tag=document.createElement('span');
+      tag.className='derivtag';
+      tag.textContent='▸ ver todos os passos até aqui';
+      alvo.appendChild(tag);
+    }
+  });
   const sid=sc.parentNode.id;let k=0;
   d.querySelectorAll('h2').forEach(h2=>{h2.id=sid+'-'+(k++);});
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
@@ -2459,6 +2516,45 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
 renderMathInElement(document.body,{delimiters:[
   {left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
   throwOnError:false});
+
+/* ---- modal das derivacoes ---- */
+(function(){
+  const alvos=[...document.querySelectorAll('.comderiv')];
+  if(!alvos.length)return;
+  const dv=document.createElement('div');dv.id='dv';
+  dv.innerHTML='<div id="dvp"><div id="dvh"><b id="dvt"></b>'+
+    '<span>todos os passos, do início até esta equação</span>'+
+    '<button id="dvx">fechar</button></div><div id="dvc"></div></div>';
+  document.body.append(dv);
+  const dvc=document.getElementById('dvc'), dvt=document.getElementById('dvt');
+  alvos.forEach((el,i)=>{
+    const sec=el.closest('section');
+    el.id='deriv-'+((sec&&sec.id)||'p')+'-'+i;
+    el.onclick=()=>abre(el);
+  });
+  function abre(el){
+    const box=el.nextElementSibling;
+    if(!box||!box.classList.contains('derivbox'))return;
+    dvt.innerHTML=esc(box.dataset.tit||'Passo a passo');
+    try{renderMathInElement(dvt,{delimiters:[
+      {left:'$$',right:'$$',display:false},
+      {left:'$',right:'$',display:false}],throwOnError:false});}catch(e){}
+    dvc.innerHTML=box.innerHTML;
+    const ps=dvc.querySelectorAll('.dpasso');
+    if(ps.length)ps[ps.length-1].classList.add('alvo');
+    dv.classList.add('on');
+    document.body.style.overflow='hidden';
+    if(history.replaceState)history.replaceState(null,'','#'+el.id);
+  }
+  function fecha(){dv.classList.remove('on');document.body.style.overflow='';}
+  dv.addEventListener('click',e=>{if(e.target===dv)fecha();});
+  document.getElementById('dvx').onclick=fecha;
+  addEventListener('keydown',e=>{if(e.key==='Escape')fecha();});
+  if(location.hash.startsWith('#deriv-')){
+    const el=document.getElementById(location.hash.slice(1));
+    if(el){el.scrollIntoView({block:'center'});abre(el);}
+  }
+})();
 const side=document.getElementById('side');
 document.getElementById('menu').onclick=()=>side.classList.toggle('aberto');
 side.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>
