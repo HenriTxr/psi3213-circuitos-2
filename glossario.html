@@ -138,6 +138,14 @@ border-bottom:1px dashed var(--line)}
 .dpasso .mat{overflow-x:auto}
 .dpasso.alvo{background:color-mix(in srgb,var(--accent) 9%,transparent);
 border-radius:8px}
+/* marcacao de termos dentro das formulas: dest, novo, cai */
+.kdest,.kdest *{color:var(--warn)}
+.knovo,.knovo *{color:var(--accent)}
+.kcai,.kcai *{color:var(--muted)}
+.legm{font-size:.82em;color:var(--muted);margin:2px 0 0}
+.legm b{font-weight:600}
+.legm .a{color:var(--warn)}.legm .b{color:var(--accent)}
+.legm .c{color:var(--muted)}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;z-index:50;
 align-items:center;justify-content:center;cursor:zoom-out}
 #lb.on{display:flex}
@@ -2513,9 +2521,14 @@ document.querySelectorAll('script[type="text/markdown"]').forEach(sc=>{
   let k3=0;d.querySelectorAll('h3').forEach(h3=>{h3.id=sid+'-h'+(k3++);});
   sc.parentNode.replaceChild(d,sc);
 });
+/* \dest{} \novo{} \cai{}: marcam termos dentro das formulas, com cor que
+   respeita o tema (ver CSS .kdest/.knovo/.kcai) */
+const KMACROS={'\\dest':'\\htmlClass{kdest}{#1}',
+  '\\novo':'\\htmlClass{knovo}{#1}','\\cai':'\\htmlClass{kcai}{#1}'};
+const KTRUST=c=>c.command==='\\htmlClass';
 renderMathInElement(document.body,{delimiters:[
   {left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
-  throwOnError:false});
+  macros:KMACROS,trust:KTRUST,strict:false,throwOnError:false});
 
 /* ---- modal das derivacoes ---- */
 (function(){
@@ -2538,10 +2551,17 @@ renderMathInElement(document.body,{delimiters:[
     dvt.innerHTML=esc(box.dataset.tit||'Passo a passo');
     try{renderMathInElement(dvt,{delimiters:[
       {left:'$$',right:'$$',display:false},
-      {left:'$',right:'$',display:false}],throwOnError:false});}catch(e){}
+      {left:'$',right:'$',display:false}],macros:KMACROS,trust:KTRUST,
+      strict:false,throwOnError:false});}catch(e){}
     dvc.innerHTML=box.innerHTML;
     const ps=dvc.querySelectorAll('.dpasso');
     if(ps.length)ps[ps.length-1].classList.add('alvo');
+    if(dvc.querySelector('.kdest,.knovo,.kcai')){
+      const lg=document.createElement('p');lg.className='legm';
+      lg.innerHTML='cores nas fórmulas: <b class="a">termo em foco</b> · '+
+        '<b class="b">o que ele virou</b> · <b class="c">o que cancela</b>';
+      dvc.insertBefore(lg,dvc.firstChild);
+    }
     dv.classList.add('on');
     document.body.style.overflow='hidden';
     if(history.replaceState)history.replaceState(null,'','#'+el.id);
